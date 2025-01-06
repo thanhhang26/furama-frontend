@@ -1,0 +1,114 @@
+{
+  "facilitiesList": [
+    {
+      "id": 6,
+      "imgSrc": "https://furamavietnam.com/wp-content/uploads/2018/03/Furama-Resort-Danang-Ocean-Suite-4-768x497.jpg",
+      "imgAlt": "Image 6",
+      "title": "PRESIDENTIAL VILLA",
+      "size": "130",
+      "information": {
+        "bedroom": "5 ",
+        "bed": "6 ",
+        "bathroom": "3 ",
+        "kitchen": "1 ",
+        "customer": "12 ",
+        "price": "6.000.000"
+      },
+      "typeId": 1
+    },
+    {
+      "id": 7,
+      "imgSrc": "https://furamavietnam.com/wp-content/uploads/2018/03/Furama-Resort-Danang-Ocean-Suite-4-768x497.jpg",
+      "imgAlt": "Image 4",
+      "title": "GARDEN SUPERIOR",
+      "size": "40.1",
+      "information": {
+        "bedroom": "5 ",
+        "bed": "6 ",
+        "bathroom": "3 ",
+        "kitchen": "1 ",
+        "customer": "12 ",
+        "price": "6.000.000 "
+      },
+      "typeId": 3
+    },
+    {
+      "id": 8,
+      "imgSrc": "https://furamavietnam.com/wp-content/uploads/2018/03/Furama-Resort-Danang-Ocean-Suite-4-768x497.jpg",
+      "imgAlt": "Image 5",
+      "title": "GARDEN DELUXE HOUSE",
+      "size": "43.7",
+      "information": {
+        "bedroom": "5 ",
+        "bed": "6 ",
+        "bathroom": "3 ",
+        "kitchen": "1 ",
+        "customer": "12 ",
+        "price": "6.000.000 "
+      },
+      "typeId": 2
+    },
+    {
+      "id": 9,
+      "imgSrc": "https://furamavietnam.com/wp-content/uploads/2018/03/Furama-Resort-Danang-Ocean-Suite-4-768x497.jpg",
+      "imgAlt": "Image 6",
+      "title": "PRESIDENTIAL VILLA",
+      "size": "130",
+      "information": {
+        "bedroom": "5 ",
+        "bed": "6 ",
+        "bathroom": "3 ",
+        "kitchen": "1 ",
+        "customer": "12 ",
+        "price": "6.000.000 "
+      },
+      "typeId": 1
+    },
+    {
+      "id": 11,
+      "information": {
+        "bedroom": "",
+        "bed": "",
+        "bathroom": "",
+        "kitchen": "",
+        "customer": "",
+        "price": ""
+      },
+      "title": "villa",
+      "bedroom": "4",
+      "bed": "5",
+      "bathroom": "7",
+      "kitchen": "1",
+      "customer": "4",
+      "price": "4.000.000"
+    },
+    {
+      "id": 12,
+      "title": "villa 1",
+      "size": "356",
+      "information": {
+        "bedroom": "3",
+        "bed": "2",
+        "bathroom": "4",
+        "kitchen": "1",
+        "customer": "3",
+        "price": "3.000.000"
+      },
+      "type": "villa"
+    }
+  ],
+  "types": [
+    {
+      "id": 1,
+      "name": "villa"
+    },
+    {
+      "id": 2,
+      "name": "house"
+    },
+    {
+      "id": 3,
+      "name": "room"
+    }
+  ]
+}

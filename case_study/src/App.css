@@ -1,0 +1,14 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: 0;
+}
+.image {
+	width: 100%;
+}
+.logo {
+	width: 65%;
+}
+.navigation {
+	background-color: #046056;
+}
