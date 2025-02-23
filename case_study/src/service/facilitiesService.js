@@ -3,7 +3,7 @@ import { BASE_URL } from "./api";
 
 export async function getAllFacilities() {
 	try {
-		const response = await axios.get(`${BASE_URL}/facilitiesList?_expand=type`);
+		const response = await axios.get(`${BASE_URL}/facilitiesList`);
 		return response.data;
 	} catch (e) {
 		return [];
@@ -45,4 +45,13 @@ export async function deleteFacilitiesById(id) {
 		const response = await axios.delete(`${BASE_URL}/facilitiesList/${id}`);
 		return response.data;
 	} catch (e) {}
+}
+
+export async function updateFacilities(id, facilities) {
+	try {
+		const response = await axios.put(`${BASE_URL}/facilitiesList/${id}`, facilities);
+		return response.data;
+	} catch (e) {
+		return null;
+	}
 }

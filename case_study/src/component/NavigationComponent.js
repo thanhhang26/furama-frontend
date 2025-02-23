@@ -8,33 +8,28 @@ function NavigationComponent() {
 			<nav className="  d-flex justify-content-center py-3">
 				<ul className="nav nav-pills">
 					<li className="nav-item">
-						<Link className="nav-link text-white" aria-current="page" to="/facilities">
-							The Furama
+						<Link className="nav-link text-white" aria-current="page" to="/homepage">
+							Giới thiệu
+						</Link>
+					</li>
+					<li className="nav-item">
+						<Link className="nav-link text-white" to="/facilities">
+							Loại phòng
 						</Link>
 					</li>
 					<li className="nav-item">
 						<Link className="nav-link text-white" to="/">
-							Villa
+							Sapa
 						</Link>
 					</li>
 					<li className="nav-item">
 						<Link className="nav-link text-white" to="/">
-							House
+							Các loại dịch vụ khác
 						</Link>
 					</li>
 					<li className="nav-item">
 						<Link className="nav-link text-white" to="/">
-							Room
-						</Link>
-					</li>
-					<li className="nav-item">
-						<Link className="nav-link text-white" to="/">
-							Services
-						</Link>
-					</li>
-					<li className="nav-item">
-						<Link className="nav-link text-white" to="/">
-							About Us
+							Liên hệ
 						</Link>
 					</li>
 				</ul>

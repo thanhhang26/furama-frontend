@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field } from "formik";
 import { addNewFacilities } from "../service/facilitiesService";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getTypeById } from "../service/typesService";
 
 function AddComponent() {
@@ -17,6 +17,7 @@ function AddComponent() {
 			customer: "",
 			price: "",
 		},
+		image: null,
 	});
 
 	const [types, setTypes] = useState([]);
@@ -27,7 +28,7 @@ function AddComponent() {
 			setTypes(list);
 		};
 		fetchData();
-	}, []); // Thêm mảng phụ thuộc rỗng
+	}, []);
 
 	const navigate = useNavigate();
 
@@ -38,85 +39,83 @@ function AddComponent() {
 	};
 
 	return (
-		<div className="container">
-			<h3>Add new facilities</h3>
-			<Formik initialValues={facilities} onSubmit={handleSubmit}>
-				<Form className="mt-3">
-					<div className="row mb-3 ms-1 align-items-center">
-						<label className="col-sm-1">Facilities:</label>
-						<div className="col-sm-4">
-							<Field as="select" name="type" className="form-select">
-								<option value="">Types</option>
-								{types.map((e) => (
-									<option key={e.id} value={e.name}>
-										{e.name}
-									</option>
-								))}
-							</Field>
-						</div>
-					</div>
+		<div className="container mt-4">
+			<div className="card shadow p-4">
+				<h3 className="card-title text-center">THÊM MỚI CÁC PHÒNG</h3>
+				<Formik initialValues={facilities} onSubmit={handleSubmit}>
+					{({ setFieldValue }) => (
+						<Form>
+							<div className="mb-3">
+								<label className="form-label">Loại dịch vụ:</label>
+								<Field as="select" name="type" className="form-select">
+									<option value="">Các dịch vụ</option>
+									{types.map((e) => (
+										<option key={e.id} value={e.name}>
+											{e.name}
+										</option>
+									))}
+								</Field>
+							</div>
 
-					<div className="row mb-3 ms-1 align-items-center">
-						<label className="col-sm-1">Title:</label>
-						<div className="col-sm-4">
-							<Field type="text" name="title" className="form-control" placeholder="Nhập số phòng ngủ" />
-						</div>
-					</div>
+							<div className="mb-3">
+								<label className="form-label">Tên phòng:</label>
+								<Field type="text" name="title" className="form-control" placeholder="Nhập tiêu đề" />
+							</div>
 
-					<div className="row mb-3 ms-1 align-items-center">
-						<label className="col-sm-1">Size:</label>
-						<div className="col-sm-4">
-							<Field type="text" name="size" className="form-control" placeholder="Nhập số phòng ngủ" />
-						</div>
-					</div>
+							<div className="mb-3">
+								<label className="form-label">
+									Diện tích phòng m<sup>2:</sup>
+								</label>
+								<Field type="text" name="size" className="form-control" placeholder="Nhập kích thước" />
+							</div>
 
-					<div className="row mb-3 ms-1 align-items-center">
-						<label className="col-sm-1">Bedroom:</label>
-						<div className="col-sm-4">
-							<Field type="text" name="information.bedroom" className="form-control" placeholder="Nhập số phòng ngủ" />
-						</div>
-					</div>
+							<div className="mb-3">
+								<label className="form-label">Phòng ngủ:</label>
+								<Field type="text" name="information.bedroom" className="form-control" placeholder="Nhập số lượng phòng ngủ" />
+							</div>
 
-					<div className="row mb-3 ms-1 align-items-center">
-						<label className="col-sm-1">Bed:</label>
-						<div className="col-sm-4">
-							<Field type="text" name="information.bed" className="form-control" placeholder="Nhập số giường" />
-						</div>
-					</div>
+							<div className="mb-3">
+								<label className="form-label">Giường:</label>
+								<Field type="text" name="information.bed" className="form-control" placeholder="Nhập số lượng giường" />
+							</div>
 
-					<div className="row mb-3 ms-1 align-items-center">
-						<label className="col-sm-1">Bathroom:</label>
-						<div className="col-sm-4">
-							<Field type="text" name="information.bathroom" className="form-control" placeholder="Nhập số phòng tắm" />
-						</div>
-					</div>
+							<div className="mb-3">
+								<label className="form-label">Phòng tắm:</label>
+								<Field type="text" name="information.bathroom" className="form-control" placeholder="Nhập số lượng phòng tắm" />
+							</div>
 
-					<div className="row mb-3 ms-1 align-items-center">
-						<label className="col-sm-1">Kitchen:</label>
-						<div className="col-sm-4">
-							<Field type="text" name="information.kitchen" className="form-control" placeholder="Nhập số nhà bếp" />
-						</div>
-					</div>
+							<div className="mb-3">
+								<label className="form-label">Phòng bếp:</label>
+								<Field type="text" name="information.kitchen" className="form-control" placeholder="Nhập số lượng nhà bếp" />
+							</div>
 
-					<div className="row mb-3 ms-1 align-items-center">
-						<label className="col-sm-1">Customer:</label>
-						<div className="col-sm-4">
-							<Field type="text" name="information.customer" className="form-control" placeholder="Nhập tên khách hàng" />
-						</div>
-					</div>
+							<div className="mb-3">
+								<label className="form-label">Số lượng khách:</label>
+								<Field type="text" name="information.customer" className="form-control" placeholder="Nhập tên khách hàng" />
+							</div>
 
-					<div className="row mb-3 ms-1 align-items-center">
-						<label className="col-sm-1">Price:</label>
-						<div className="col-sm-4">
-							<Field type="text" name="information.price" className="form-control" placeholder="Nhập giá" />
-						</div>
-					</div>
+							<div className="mb-3">
+								<label className="form-label">Giá tiền (VNĐ):</label>
+								<Field type="text" name="information.price" className="form-control" placeholder="Nhập giá" />
+							</div>
 
-					<button type="submit" className="btn btn-secondary btn-sm mb-3 ms-2">
-						Thêm
-					</button>
-				</Form>
-			</Formik>
+							<div className="mb-3">
+								<label className="form-label">Cập nhật ảnh:</label>
+								<input type="file" className="form-control" />
+							</div>
+
+							<div className="text-start">
+								<button type="submit" className="btn btn-success">
+									Lưu
+								</button>
+								<Link type="button" className="btn btn-secondary ms-3" to={"/facilities"}>
+									Trở về
+								</Link>
+							</div>
+						</Form>
+					)}
+				</Formik>
+			</div>
 		</div>
 	);
 }

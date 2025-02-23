@@ -12,3 +12,93 @@
 .navigation {
 	background-color: #046056;
 }
+.footer-container {
+	background-color: #b0d3c7;
+	padding: 40px 10%;
+	color: #3d3d3d;
+}
+
+.footer-content {
+	display: flex;
+	justify-content: space-between;
+}
+
+.footer-left,
+.footer-right {
+	width: 45%;
+}
+
+.footer-title {
+	font-size: 24px;
+	font-weight: bold;
+	color: #b59c5b;
+}
+
+.footer-text {
+	font-size: 16px;
+	margin-bottom: 20px;
+}
+
+.footer-button {
+	background-color: #004d40;
+	color: white;
+	padding: 10px 20px;
+	border: none;
+	cursor: pointer;
+}
+
+.footer-subtitle {
+	font-size: 20px;
+	font-weight: bold;
+	color: #b59c5b;
+	margin-top: 20px;
+}
+
+.footer-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.footer-list li {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px 0;
+	border-bottom: 1px solid #ddd; /* Đường kẻ mờ */
+}
+
+.location-name {
+	font-weight: bold;
+	color: #222; /* Màu chữ chính */
+}
+
+.location-time {
+	color: #888; /* Màu xám nhạt */
+}
+
+.footer-contact-title {
+	font-size: 20px;
+	font-weight: bold;
+	color: #b59c5b;
+}
+
+.footer-contact-text {
+	font-size: 16px;
+	margin: 5px 0;
+}
+
+.footer-social-icons {
+	display: flex;
+	gap: 15px; /* Khoảng cách giữa các icon */
+}
+
+.social-icon {
+	font-size: 30px; /* Đặt kích thước icon */
+	color: black; /* Màu icon */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px; /* Đảm bảo icon nằm trong khung vuông */
+	height: 40px;
+}

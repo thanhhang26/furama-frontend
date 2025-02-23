@@ -1,114 +1,163 @@
 {
-  "facilitiesList": [
-    {
-      "id": 6,
-      "imgSrc": "https://furamavietnam.com/wp-content/uploads/2018/03/Furama-Resort-Danang-Ocean-Suite-4-768x497.jpg",
-      "imgAlt": "Image 6",
-      "title": "PRESIDENTIAL VILLA",
-      "size": "130",
-      "information": {
-        "bedroom": "5 ",
-        "bed": "6 ",
-        "bathroom": "3 ",
-        "kitchen": "1 ",
-        "customer": "12 ",
-        "price": "6.000.000"
-      },
-      "typeId": 1
-    },
-    {
-      "id": 7,
-      "imgSrc": "https://furamavietnam.com/wp-content/uploads/2018/03/Furama-Resort-Danang-Ocean-Suite-4-768x497.jpg",
-      "imgAlt": "Image 4",
-      "title": "GARDEN SUPERIOR",
-      "size": "40.1",
-      "information": {
-        "bedroom": "5 ",
-        "bed": "6 ",
-        "bathroom": "3 ",
-        "kitchen": "1 ",
-        "customer": "12 ",
-        "price": "6.000.000 "
-      },
-      "typeId": 3
-    },
-    {
-      "id": 8,
-      "imgSrc": "https://furamavietnam.com/wp-content/uploads/2018/03/Furama-Resort-Danang-Ocean-Suite-4-768x497.jpg",
-      "imgAlt": "Image 5",
-      "title": "GARDEN DELUXE HOUSE",
-      "size": "43.7",
-      "information": {
-        "bedroom": "5 ",
-        "bed": "6 ",
-        "bathroom": "3 ",
-        "kitchen": "1 ",
-        "customer": "12 ",
-        "price": "6.000.000 "
-      },
-      "typeId": 2
-    },
-    {
-      "id": 9,
-      "imgSrc": "https://furamavietnam.com/wp-content/uploads/2018/03/Furama-Resort-Danang-Ocean-Suite-4-768x497.jpg",
-      "imgAlt": "Image 6",
-      "title": "PRESIDENTIAL VILLA",
-      "size": "130",
-      "information": {
-        "bedroom": "5 ",
-        "bed": "6 ",
-        "bathroom": "3 ",
-        "kitchen": "1 ",
-        "customer": "12 ",
-        "price": "6.000.000 "
-      },
-      "typeId": 1
-    },
-    {
-      "id": 11,
-      "information": {
-        "bedroom": "",
-        "bed": "",
-        "bathroom": "",
-        "kitchen": "",
-        "customer": "",
-        "price": ""
-      },
-      "title": "villa",
-      "bedroom": "4",
-      "bed": "5",
-      "bathroom": "7",
-      "kitchen": "1",
-      "customer": "4",
-      "price": "4.000.000"
-    },
-    {
-      "id": 12,
-      "title": "villa 1",
-      "size": "356",
-      "information": {
-        "bedroom": "3",
-        "bed": "2",
-        "bathroom": "4",
-        "kitchen": "1",
-        "customer": "3",
-        "price": "3.000.000"
-      },
-      "type": "villa"
-    }
-  ],
-  "types": [
-    {
-      "id": 1,
-      "name": "villa"
-    },
-    {
-      "id": 2,
-      "name": "house"
-    },
-    {
-      "id": 3,
-      "name": "room"
-    }
-  ]
+	"facilitiesList": [
+		{
+			"id": 1,
+			"imgSrc": "https://furamavietnam.com/wp-content/uploads/2018/03/Furama-Resort-Danang-Ocean-Suite-4-768x497.jpg",
+			"imgAlt": "Image 1",
+			"title": "PHÒNG PRESIDENTIAL SUITE",
+			"size": "130",
+			"information": {
+				"bedroom": "1 ",
+				"bed": "1 ",
+				"bathroom": "1 ",
+				"kitchen": "1 ",
+				"customer": "2 ",
+				"price": "6.000.000"
+			},
+
+			"typeId": 3
+		},
+		{
+			"id": 2,
+			"imgSrc": "https://furamavietnam.com/wp-content/uploads/2018/03/Furama-Resort-Danang-Ocean-Suite-4-768x497.jpg",
+			"imgAlt": "Image 2",
+			"title": "PHÒNG STUDIO SUITE HƯỚNG BIỂN",
+			"size": "85.2",
+			"information": {
+				"bedroom": "1 ",
+				"bed": "1",
+				"bathroom": "1",
+				"kitchen": "1",
+				"customer": "2 ",
+				"price": "6.000.000"
+			},
+			"typeId": 3
+		},
+		{
+			"id": 3,
+			"imgSrc": "https://furamavietnam.com/wp-content/uploads/2018/03/Furama-Resort-Danang-Ocean-Suite-4-768x497.jpg",
+			"imgAlt": "Image 3",
+			"title": "BIỆT THỰ HƯỚNG BIỂN CÓ HỒ BƠI RIÊNG",
+			"size": "900",
+			"information": {
+				"bedroom": "4 ",
+				"bed": "6",
+				"bathroom": "4",
+				"kitchen": "1",
+				"customer": "9",
+				"price": "15.000.000"
+			},
+			"typeId": 2
+		},
+		{
+			"id": 4,
+			"imgSrc": "https://furamavietnam.com/wp-content/uploads/2018/03/Furama-Resort-Danang-Ocean-Suite-4-768x497.jpg",
+			"imgAlt": "Image 4",
+			"title": "BIỆT THỰ HƯỚNG VƯỜN CÓ HỒ BƠI RIÊNG",
+			"size": "502",
+			"information": {
+				"bedroom": "3",
+				"bed": "4 ",
+				"bathroom": "3",
+				"kitchen": "1",
+				"customer": "6",
+				"price": "10.000.000"
+			},
+			"typeId": 2
+		},
+		{
+			"id": 5,
+			"imgSrc": "https://furamavietnam.com/wp-content/uploads/2018/03/Furama-Resort-Danang-Ocean-Suite-4-768x497.jpg",
+			"imgAlt": "Image 5",
+			"title": "PHÒNG PRESIDENTIAL",
+			"size": "600",
+			"information": {
+				"bedroom": "1",
+				"bed": "1",
+				"bathroom": "1",
+				"kitchen": "1",
+				"customer": "2",
+				"price": "20.000.000"
+			},
+			"typeId": 3
+		},
+		{
+			"id": 6,
+			"imgSrc": "https://furamavietnam.com/wp-content/uploads/2018/03/Furama-Resort-Danang-Ocean-Suite-4-768x497.jpg",
+			"imgAlt": "Image 6",
+			"title": "VILLA HƯỚNG BIỂN",
+			"size": "307",
+			"information": {
+				"bedroom": "4 ",
+				"bed": "6",
+				"bathroom": "3",
+				"kitchen": "1",
+				"customer": "5",
+				"price": "9.000.000"
+			},
+			"typeId": 1
+		},
+		{
+			"id": 7,
+			"imgSrc": "https://furamavietnam.com/wp-content/uploads/2018/03/Furama-Resort-Danang-Ocean-Suite-4-768x497.jpg",
+			"imgAlt": "Image 7",
+			"title": "VILLA HƯỚNG VƯỜN",
+			"size": "500",
+			"information": {
+				"bedroom": "5 ",
+				"bed": "6 ",
+				"bathroom": "3 ",
+				"kitchen": "1 ",
+				"customer": "12 ",
+				"price": "6.000.000 "
+			},
+			"typeId": 1
+		},
+		{
+			"id": 8,
+			"imgSrc": "https://furamavietnam.com/wp-content/uploads/2018/03/Furama-Resort-Danang-Ocean-Suite-4-768x497.jpg",
+			"imgAlt": "Image 8",
+			"title": "PHÒNG DELUXE HƯỚNG BIỂN",
+			"size": "43.7",
+			"information": {
+				"bedroom": "2",
+				"bed": "2",
+				"bathroom": "2",
+				"kitchen": "1",
+				"customer": "4",
+				"price": "6.000.000 "
+			},
+			"typeId": 3
+		},
+		{
+			"id": 9,
+			"imgSrc": "https://furamavietnam.com/wp-content/uploads/2018/03/Furama-Resort-Danang-Ocean-Suite-4-768x497.jpg",
+			"imgAlt": "Image 9",
+			"title": "VILLA TỔNG THỐNG",
+			"size": "130",
+			"information": {
+				"bedroom": "5 ",
+				"bed": "6 ",
+				"bathroom": "3 ",
+				"kitchen": "1 ",
+				"customer": "12 ",
+				"price": "6.000.000 "
+			},
+			"typeId": 1
+		}
+	],
+	"types": [
+		{
+			"id": 1,
+			"name": "villa"
+		},
+		{
+			"id": 2,
+			"name": "resort"
+		},
+		{
+			"id": 3,
+			"name": "room"
+		}
+	]
 }
