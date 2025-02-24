@@ -7,20 +7,26 @@ import { getAllTypes } from "../service/typesService";
 import { Link } from "react-router-dom";
 import Pagination from "react-bootstrap/Pagination";
 import DeleteComponent from "./DeleteComponent";
+import { PAGE_SIZE } from "../service/constant";
 
 function FacilitiesList() {
 	const [facilitiesList, setFacilitiesList] = useState([]);
 	const [type, setType] = useState([]);
 	const [show, setShow] = useState(false);
 	const [deleteFacilities, setDeleteFacilities] = useState({});
-
+	const [totalSize, setTotalSize] = useState(PAGE_SIZE);
+	const [page, setPage] = useState(1);
+	const [totalPage, setTotalPage] = useState(0);
 	useEffect(() => {
 		const fetchData = async () => {
-			setFacilitiesList(await getAllFacilities());
+			const [data, totalRecords] = await getAllFacilities(page, totalSize);
+			setFacilitiesList(data);
+
 			setType(await getAllTypes());
+			setTotalPage(Math.ceil(totalRecords / PAGE_SIZE));
 		};
 		fetchData();
-	}, [show]);
+	}, [show, page]);
 
 	const searchNameRef = useRef();
 	const searchTypeRef = useRef();
@@ -38,6 +44,18 @@ function FacilitiesList() {
 
 	const closeModal = () => {
 		setShow(false);
+	};
+	const handleFirst = () => {
+		setPage(1);
+	};
+	const handlePrev = () => {
+		setPage(page - 1);
+	};
+	const handleNext = () => {
+		setPage(page + 1);
+	};
+	const handleLast = () => {
+		setPage(totalPage);
 	};
 	return (
 		<div>
@@ -63,6 +81,11 @@ function FacilitiesList() {
 							<button className="btn btn-outline-secondary" type="button" onClick={handleSearchName}>
 								Search
 							</button>
+						</div>
+						<div className="d-flex justify-content-start">
+							<Link className="btn btn-success mt-3 mb-3 px-4" id="add-link" to="/add_new">
+								Thêm mới
+							</Link>
 						</div>
 					</div>
 				</div>
@@ -92,18 +115,27 @@ function FacilitiesList() {
 								</Col>
 							))}
 					</Row>
-
-					<div className="d-flex justify-content-start">
-						<Link className="btn btn-success mt-3 mb-3 px-4" id="add-link" to="/add_new">
-							Thêm mới
-						</Link>
-					</div>
 				</div>
 			</div>
 
 			<div>
 				<DeleteComponent facilities={deleteFacilities} show={show} closeModal={closeModal} />
 			</div>
+			<Pagination className="container my-4 d-flex justify-content-center" id="pagination">
+				<Pagination.First onClick={handleFirst} disabled={page === 1}>
+					Trang đầu
+				</Pagination.First>
+				<Pagination.Prev onClick={handlePrev} disabled={page === 1} />
+				{[...Array(totalPage || 0)].map((_, index) => (
+					<Pagination.Item key={index} active={page === index + 1} onClick={() => setPage(index + 1)}>
+						{index + 1}
+					</Pagination.Item>
+				))}
+				<Pagination.Next onClick={handleNext} disabled={page === totalPage} />
+				<Pagination.Last onClick={handleLast} disabled={page === totalPage}>
+					Trang cuối
+				</Pagination.Last>
+			</Pagination>
 		</div>
 	);
 }

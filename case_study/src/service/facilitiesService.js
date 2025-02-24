@@ -1,10 +1,11 @@
 import axios from "axios";
 import { BASE_URL } from "./api";
 
-export async function getAllFacilities() {
+export async function getAllFacilities(page, limit) {
 	try {
-		const response = await axios.get(`${BASE_URL}/facilitiesList`);
-		return response.data;
+		const response = await axios.get(`${BASE_URL}/facilitiesList?_page=${page}&_limit=${limit}&_expand=type`);
+		const totalRecords = response.headers["x-total-count"];
+		return [response.data, totalRecords];
 	} catch (e) {
 		return [];
 	}
