@@ -1,8 +1,8 @@
-* {
-	padding: 0;
-	margin: 0;
-	box-sizing: 0;
-}
+$tooltip-bg: #046056;
+$tooltip-max-width: 250px;
+
+/* The following line can be included in a src/App.scss */
+@import '~bootstrap/scss/bootstrap';
 .image {
 	width: 100%;
 }
@@ -102,3 +102,5 @@
 	width: 40px; /* Đảm bảo icon nằm trong khung vuông */
 	height: 40px;
 }
+
+

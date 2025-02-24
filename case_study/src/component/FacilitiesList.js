@@ -8,6 +8,10 @@ import { Link } from "react-router-dom";
 import Pagination from "react-bootstrap/Pagination";
 import DeleteComponent from "./DeleteComponent";
 import { PAGE_SIZE } from "../service/constant";
+import { FiAlertCircle } from "react-icons/fi";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Popover from "react-bootstrap/Popover";
+import Tooltip from "react-bootstrap/Tooltip";
 
 function FacilitiesList() {
 	const [facilitiesList, setFacilitiesList] = useState([]);
@@ -83,7 +87,7 @@ function FacilitiesList() {
 							</button>
 						</div>
 						<div className="d-flex justify-content-start">
-							<Link className="btn btn-success mt-3 mb-3 px-4" id="add-link" to="/add_new">
+							<Link className="btn btn-primary mt-3 mb-3 px-4" id="add-link" to="/add_new">
 								Thêm mới
 							</Link>
 						</div>
@@ -95,7 +99,7 @@ function FacilitiesList() {
 						{facilitiesList &&
 							facilitiesList.map((f) => (
 								<Col key={f.id}>
-									<Card className="h-100 d-flex flex-column">
+									<Card className="h-100 d-flex flex-column shadow">
 										<Card.Img variant="top" src={f.imgSrc} alt={f.imgAlt} />
 										<Card.Body className="d-flex flex-column">
 											<Card.Title>{f.title}</Card.Title>
@@ -103,12 +107,35 @@ function FacilitiesList() {
 												Room size: {f.size} m<sup>2</sup>
 											</Card.Text>
 											<div className="mt-auto">
-												<Link to={`/facilities/detail/${f.id}`} className="btn btn-primary me-2">
-													Xem chi tiết
-												</Link>
-												<button className="btn btn-danger" onClick={() => showModalDelete(f)}>
-													Xoá
-												</button>
+												<Row className="d-flex justify-content-between align-items-center">
+													<Col>
+														<button className="btn btn-outline-danger w-100" onClick={() => showModalDelete(f)}>
+															Xoá
+														</button>
+													</Col>
+													<Col>
+														<OverlayTrigger
+															placement="bottom"
+															overlay={
+																<Tooltip id={`tooltip-${f.id}`}>
+																	<ul className="px-3 py-2 m-0" style={{ textAlign: "left" }}>
+																		{f.feature.map((item) => (
+																			<li>{item}</li>
+																		))}
+																	</ul>
+																</Tooltip>
+															}
+														>
+															<Link
+																to={`/facilities/detail/${f.id}`}
+																className="btn btn-sm d-flex align-items-center justify-content-center px-2 py-1"
+															>
+																<FiAlertCircle className="me-2" style={{ fontSize: "14px" }} />
+																Xem chi tiết
+															</Link>
+														</OverlayTrigger>
+													</Col>
+												</Row>
 											</div>
 										</Card.Body>
 									</Card>

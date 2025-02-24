@@ -15,6 +15,7 @@
     "react-player": "^2.16.0",
     "react-router-dom": "^7.1.1",
     "react-scripts": "5.0.1",
+    "sass": "^1.85.0",
     "yup": "^1.6.1"
   },
   "scripts": {

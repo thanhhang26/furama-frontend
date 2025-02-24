@@ -1,6 +1,5 @@
 import React from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
 import ReactPlayer from "react-player";
 
 function Homepage() {
@@ -8,7 +7,9 @@ function Homepage() {
 		<Container className="mt-5">
 			<Row>
 				<Col md={6}>
-					<h2 className="text-warning fw-bold d-flex text-align-justify">KHU NGHỈ DƯỠNG ĐẲNG CẤP THẾ GIỚI FURAMA ĐÀ NẴNG</h2>
+					<h2 className="fw-bold d-flex text-align-justify" style={{ color: "#cbbe73" }}>
+						KHU NGHỈ DƯỠNG ĐẲNG CẤP THẾ GIỚI FURAMA ĐÀ NẴNG
+					</h2>
 					<p>
 						Hướng ra bãi biển Đà Nẵng trải dài cát trắng, Furama Resort Đà Nẵng là cửa ngõ đến với 3 di sản văn hoá thế giới: Hội An (20 phút), Mỹ Sơn
 						(90 phút) và Huế (120 phút). Với 196 phòng hạng sang cùng với 68 căn biệt thự từ hai đến bốn phòng ngủ có hồ bơi riêng đều được trang trí

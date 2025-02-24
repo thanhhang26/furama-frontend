@@ -42,7 +42,9 @@ function DetailComponent() {
 
 	return (
 		<div className="mt-4">
-			<h3 className="text-center mb-4">{facilitiesDetail.title}</h3>
+			<h3 className="text-center mb-4" style={{ color: "#cbbe73" }}>
+				{facilitiesDetail.title}
+			</h3>
 			<Carousel activeIndex={index} onSelect={handleSelect} className=" shadow overflow-hidden">
 				<Carousel.Item>
 					<img src={image1} alt="Living Room" className="d-block w-100" />

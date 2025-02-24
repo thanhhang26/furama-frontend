@@ -114,7 +114,7 @@ function EditComponent() {
 								<button type="submit" className="btn btn-success">
 									Lưu
 								</button>
-								<Link type="button" className="btn btn-secondary ms-3" to="/facilities">
+								<Link type="button" className="btn btn-secondary ms-3" to="/facilities/detail">
 									Trở về
 								</Link>
 							</div>

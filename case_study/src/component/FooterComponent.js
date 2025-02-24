@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { FaFacebookSquare, FaInstagramSquare, FaYoutube } from "react-icons/fa";
 import { Modal } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap
 import { Link } from "react-router-dom";
 
 function FooterComponent() {
