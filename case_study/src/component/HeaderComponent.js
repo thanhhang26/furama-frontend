@@ -1,8 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import image from "../Logo.png";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../redux/accountAction";
 
 function HeaderComponent() {
+	const account = useSelector((state) => state.user.account);
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
+	const handleLogout = () => {
+		dispatch(logout());
+		navigate("/");
+	};
 	return (
 		<div className="container">
 			<header className="d-flex flex-wrap justify-content-center py-3 border-bottom">
@@ -17,7 +26,19 @@ function HeaderComponent() {
 						<Link className="nav-link text-dark">Support</Link>
 					</li>
 					<li className="nav-item">
-						<Link className="btn btn-secondary">Sign in</Link>
+						<Link className="btn btn-secondary" to={"/login"}>
+							Sign in
+						</Link>
+					</li>
+					<li className="nav-item ms-auto">
+						<div className="  mt-2 ms-2 fw-bold ">{account && account.username}</div>
+					</li>
+					<li className="nav-item ms-auto">
+						{account && (
+							<div className=" btn btn-outline-secondary ms-3  " onClick={handleLogout} Logout>
+								Logout
+							</div>
+						)}
 					</li>
 				</ul>
 			</header>

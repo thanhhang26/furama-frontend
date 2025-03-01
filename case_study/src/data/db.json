@@ -168,5 +168,19 @@
 			"id": 3,
 			"name": "room"
 		}
+	],
+	"accounts": [
+		{
+			"id": 1,
+			"username": "admin",
+			"password": "thanhhang26",
+			"role": "ADMIN"
+		},
+		{
+			"id": 2,
+			"username": "Thanh Hang",
+			"password": "hang123",
+			"role": "STUDENT"
+		}
 	]
 }

@@ -8,6 +8,7 @@ import DetailComponent from "./component/DetailComponent";
 import AddComponent from "./component/AddComponent";
 import Homepage from "./component/Homepage";
 import EditComponent from "./component/EditComponent";
+import LoginComponent from "./component/LoginComponent";
 function App() {
 	return (
 		<>
@@ -19,6 +20,7 @@ function App() {
 				<Route path={"/facilities/detail/:id"} element={<DetailComponent />}></Route>
 				<Route path={"/add_new"} element={<AddComponent />}></Route>
 				<Route path={"/edit/:id"} element={<EditComponent />}></Route>
+				<Route path={"/login"} element={<LoginComponent />}></Route>
 			</Routes>
 			<FooterComponent />
 		</>

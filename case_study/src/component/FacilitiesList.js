@@ -96,7 +96,7 @@ function FacilitiesList() {
 
 				<div className="container">
 					<Row xs={1} md={3} className="g-4 mt-3">
-						{facilitiesList &&
+						{facilitiesList?.length > 0 ? (
 							facilitiesList.map((f) => (
 								<Col key={f.id}>
 									<Card className="h-100 d-flex flex-column shadow">
@@ -119,8 +119,8 @@ function FacilitiesList() {
 															overlay={
 																<Tooltip id={`tooltip-${f.id}`}>
 																	<ul className="px-3 py-2 m-0" style={{ textAlign: "left" }}>
-																		{f.feature.map((item) => (
-																			<li>{item}</li>
+																		{f.feature?.map((item, index) => (
+																			<li key={index}>{item}</li>
 																		))}
 																	</ul>
 																</Tooltip>
@@ -140,7 +140,10 @@ function FacilitiesList() {
 										</Card.Body>
 									</Card>
 								</Col>
-							))}
+							))
+						) : (
+							<p className="text-center">Không có dữ liệu</p>
+						)}
 					</Row>
 				</div>
 			</div>
