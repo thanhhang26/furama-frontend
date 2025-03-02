@@ -60,7 +60,7 @@ function FuramaComponent() {
 									<Card className="h-100 d-flex flex-column shadow">
 										<Card.Img variant="top" src={card.imgSrc} alt={card.imgAlt} />
 										<Card.Body className="d-flex flex-column">
-											<Card.Text>{card.text}</Card.Text>
+											<Card.Text style={{ textAlign: "justify" }}>{card.text}</Card.Text>
 										</Card.Body>
 									</Card>
 								</Col>

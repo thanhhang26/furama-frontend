@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { checkLogin } from "../service/accountService";
 import { login } from "../redux/accountAction";
 import { Link, useNavigate } from "react-router-dom";
-import { Formik, Form, Field } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import { toast } from "react-toastify";
+import * as Yup from "yup";
 import "react-toastify/dist/ReactToastify.css";
 import { Col, Row } from "react-bootstrap";
 
@@ -15,7 +16,7 @@ function LoginComponent() {
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		if (account) navigate("/homepage");
+		if (account) navigate("/furama");
 	}, [account, navigate]);
 
 	const handleSubmit = async (value) => {
@@ -29,6 +30,11 @@ function LoginComponent() {
 		}
 	};
 
+	const validationSchema = Yup.object({
+		username: Yup.string().required("Không được để trống"),
+		password: Yup.string().required("Không được để trống"),
+	});
+
 	return (
 		<div
 			className="login-container"
@@ -40,15 +46,17 @@ function LoginComponent() {
 			<div className="login-overlay"></div>
 			<div className="login-card shadow">
 				<h3 className="text-center mb-4">Đăng nhập</h3>
-				<Formik initialValues={user} onSubmit={handleSubmit}>
+				<Formik initialValues={user} onSubmit={handleSubmit} validationSchema={validationSchema}>
 					<Form>
 						<div className="mb-3">
-							<label className="form-label">Username:</label>
-							<Field type="text" name="username" className="form-control" placeholder="Enter your username" />
+							<label className="form-label">Tên đăng nhập hoặc email:</label>
+							<Field type="text" name="username" className="form-control" placeholder="Tên đăng nhập hoặc email" />
+							<ErrorMessage name="username" component="div" className="text-danger mt-2" />
 						</div>
 						<div className="mb-3">
-							<label className="form-label">Password:</label>
-							<Field type="password" name="password" className="form-control" placeholder="Enter your password" />
+							<label className="form-label">Mật khẩu:</label>
+							<Field type="password" name="password" className="form-control" placeholder="Nhập mật khẩu" />
+							<ErrorMessage name="password" component="div" className="text-danger mt-2" />
 						</div>
 						<div className="text-center">
 							<button type="submit" className="btn mt-3 w-100 btn-custom-outline">
@@ -57,7 +65,7 @@ function LoginComponent() {
 						</div>
 						<div className="mt-3 d-flex justify-content-between">
 							<div>
-								<Link to="/" className="text-decoration-none" style={{ color: "#04605" }}>
+								<Link to="/register" className="text-decoration-none" style={{ color: "#04605" }}>
 									Bạn chưa có tài khoản?
 								</Link>
 							</div>

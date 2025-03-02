@@ -5,7 +5,6 @@ import DetailComponent from "./component_admin/DetailComponent";
 import AddComponent from "./component_admin/AddComponent";
 import Homepage from "./component_admin/Homepage";
 import EditComponent from "./component_admin/EditComponent";
-import LoginComponent from "./component_admin/LoginComponent";
 import { ToastContainer } from "react-toastify";
 import HomeLayout from "./layout/HomeLayout";
 import AuthLayout from "./layout/AuthLayout";
@@ -14,6 +13,8 @@ import FacilitiesUser from "./component_user/FacilitiesUser";
 import DetailUser from "./component_user/DetailUser";
 import ContactUser from "./component_user/ContactUser";
 import FuramaComponent from "./component_admin/FuramaConponent";
+import LoginComponent from "./login-logout/LoginComponent";
+import Register from "./login-logout/Register";
 function App() {
 	const account = useSelector((state) => state?.user?.account);
 	return (
@@ -30,6 +31,7 @@ function App() {
 				</Route>
 				<Route element={<AuthLayout />}>
 					<Route path={"/login"} element={<LoginComponent />}></Route>
+					<Route path={"/register"} element={<Register />}></Route>
 				</Route>
 			</Routes>
 			<ToastContainer />

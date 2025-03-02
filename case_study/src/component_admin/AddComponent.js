@@ -24,6 +24,7 @@ function AddComponent() {
 	const [types, setTypes] = useState([]);
 
 	useEffect(() => {
+		window.scrollTo(0, 0); // Trượt lên đầu trang khi component được render
 		const fetchData = async () => {
 			const list = await getTypeById();
 			setTypes(list);

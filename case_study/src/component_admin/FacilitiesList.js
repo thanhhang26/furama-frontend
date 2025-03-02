@@ -22,6 +22,7 @@ function FacilitiesList() {
 	const [page, setPage] = useState(1);
 	const [totalPage, setTotalPage] = useState(0);
 	useEffect(() => {
+		window.scrollTo(0, 0); // Trượt lên đầu trang khi component được render
 		const fetchData = async () => {
 			const [data, totalRecords] = await getAllFacilities(page, totalSize);
 			setFacilitiesList(data);

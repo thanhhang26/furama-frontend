@@ -29,6 +29,7 @@ function DetailComponent() {
 
 	const { id } = useParams();
 	useEffect(() => {
+		window.scrollTo(0, 0); // Trượt lên đầu trang khi component được render
 		const detailData = async () => {
 			const detail = await getFacilitiesById(id);
 			setFacilitiesDetail(detail);
