@@ -56,7 +56,7 @@ function EditComponent() {
 	}
 
 	return (
-		<div className="container mt-4">
+		<div className="container mt-4 mb-4">
 			<div className="card shadow p-4">
 				<h3 className="card-title text-center">CHỈNH SỬA THÔNG TIN PHÒNG</h3>
 				<Formik initialValues={facilities} onSubmit={handleSubmit} validationSchema={validationSchema}>
@@ -114,7 +114,7 @@ function EditComponent() {
 								<button type="submit" className="btn btn-success">
 									Lưu
 								</button>
-								<Link type="button" className="btn btn-secondary ms-3" to="/facilities/detail">
+								<Link type="button" className="btn btn-secondary ms-3" to="/facilities">
 									Trở về
 								</Link>
 							</div>

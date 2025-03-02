@@ -1,11 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaFacebookSquare, FaInstagramSquare, FaYoutube } from "react-icons/fa";
 import { Modal } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { getAllContact } from "../service/facilitiesService";
+import { GiPositionMarker } from "react-icons/gi";
+import { FaPhone } from "react-icons/fa6";
+import { IoMdMail } from "react-icons/io";
 
 function FooterComponent() {
 	const [show, setShow] = useState(false);
-
+	const [contact, setContact] = useState([]);
+	useEffect(() => {
+		const fetchData = async () => {
+			const data = await getAllContact();
+			setContact(data);
+		};
+		fetchData();
+	}, []);
 	return (
 		<footer className="footer-container">
 			<div className="footer-content">
@@ -56,9 +67,32 @@ function FooterComponent() {
 
 				<div className="footer-right">
 					<h3 className="footer-contact-title">Liên hệ</h3>
-					<p className="footer-contact-text">📍 103 - 105 Võ Nguyên Giáp, Khuê Mỹ, Ngũ Hành Sơn, Đà Nẵng, Việt Nam</p>
-					<p className="footer-contact-text">📞 84-236-3847 333 / 888</p>
-					<p className="footer-contact-text">✉ reservation@furamavietnam.com</p>
+					{contact?.length > 0 ? (
+						contact.map((c) => (
+							<div key={c.id}>
+								<p>
+									<span className=" me-3">
+										<GiPositionMarker />
+									</span>
+									{c.address}
+								</p>
+								<p>
+									<span className="me-3">
+										<FaPhone />
+									</span>
+									{c.phone}
+								</p>
+								<p>
+									<span className="me-3">
+										<IoMdMail />
+									</span>
+									{c.mail}
+								</p>
+							</div>
+						))
+					) : (
+						<p className="text-center">Không có dữ liệu</p>
+					)}
 					<div className="footer-social-icons">
 						<Link to="#" className="social-icon">
 							<FaFacebookSquare />

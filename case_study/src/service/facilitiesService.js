@@ -56,3 +56,21 @@ export async function updateFacilities(id, facilities) {
 		return null;
 	}
 }
+
+export async function getAllContact() {
+	try {
+		const response = await axios.get(`${BASE_URL}/contact`);
+		return response.data;
+	} catch (e) {
+		return [];
+	}
+}
+
+export async function getAllCard() {
+	try {
+		const response = await axios.get(`${BASE_URL}/card`);
+		return response.data;
+	} catch (e) {
+		return [];
+	}
+}

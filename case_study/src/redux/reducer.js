@@ -1,20 +1,18 @@
 import { combineReducers } from "redux";
+import { LOGIN_TYPE, LOGOUT_TYPE } from "./accountConstant";
 
 const initState = {
-	account: {
-		userName: "",
-		password: "",
-		role: "",
-	},
+	account: window.localStorage.getItem("user") ? JSON.parse(window.localStorage.getItem("user")) : null,
 };
 function accountReducer(state = initState, action) {
 	switch (action.type) {
-		case "LOGIN":
+		case LOGIN_TYPE:
 			return {
 				...state,
 				account: action.payload,
 			};
-		case "LOGOUT":
+		case LOGOUT_TYPE:
+			localStorage.removeItem("user"); //Xoá localStorage khi logout
 			return {
 				...state,
 				account: null,

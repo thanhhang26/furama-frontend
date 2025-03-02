@@ -174,13 +174,43 @@
 			"id": 1,
 			"username": "admin",
 			"password": "thanhhang26",
+			"avatar": "/image/avatar.jpg",
 			"role": "ADMIN"
 		},
 		{
 			"id": 2,
 			"username": "Thanh Hang",
 			"password": "hang123",
-			"role": "STUDENT"
+			"avatar": "https://i.pinimg.com/736x/8a/9d/6e/8a9d6e85a93b8b3a8002896da71882a3.jpg",
+			"role": "USER"
+		}
+	],
+	"contact": [
+		{
+			"id": 1,
+			"address": "103 - 105 Võ Nguyên Giáp, Khuê Mỹ, Ngũ Hành Sơn, Đà Nẵng, Việt Nam",
+			"phone": "84-236-3847 333 / 888",
+			"mail": "reservation@furamavietnam.com"
+		}
+	],
+	"card": [
+		{
+			"id": 1,
+			"imgSrc": "https://furamavietnam.com/wp-content/uploads/2023/09/1.jpg",
+			"imgAlt": "Image 1",
+			"text": "Là khu nghỉ dưỡng danh giá nhất Việt Nam, Furama Resort Đà Nẵng tự hào phục vụ hàng nghìn du khách mỗi năm và đặc biệt là điểm đến ưa thích của nhiều hoàng gia, lãnh đạo doanh nghiệp quốc tế và khách nổi tiếng. Lên kế hoạch cho kỳ nghỉ của bạn với chúng tôi!"
+		},
+		{
+			"id": 2,
+			"imgSrc": "https://furamavietnam.com/wp-content/uploads/2023/09/1.jpg",
+			"imgAlt": "Image 2",
+			"text": "Trải nghiệm ẩm thực tại Furama có sự pha trộn độc đáo các món ăn truyền thống Việt Nam với hương vị ẩm thực châu Á, Ý và châu Âu cùng các món bò nhập khẩu thượng hạng tại đa dạng các nhà hàng, quầy bar đẳng cấp được bao quanh bởi một khu vườn nhiệt đới hay hướng mình ra biển."
+		},
+		{
+			"id": 3,
+			"imgSrc": "https://furamavietnam.com/wp-content/uploads/2023/09/1.jpg",
+			"imgAlt": "Image 3",
+			"text": "Ẩn mình trong một góc nhỏ của khu nghỉ dưỡng, V-Senses Wellness & Spa đưa du khách đến một thiên đường thanh bình của sự thư giãn và trẻ hóa hoàn toàn. Hãy tận hưởng thời gian thư thái với những liệu trình trị liệu vô cùng đặc biệt tại V-senses Wellness & Spa."
 		}
 	]
 }
