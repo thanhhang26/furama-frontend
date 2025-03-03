@@ -10,6 +10,7 @@ function accountReducer(state = initState, action) {
 			return {
 				...state,
 				account: action.payload,
+				avatar: action.payload.avatar || "/image/avatar.jpg",
 			};
 		case LOGOUT_TYPE:
 			localStorage.removeItem("user"); //Xoá localStorage khi logout

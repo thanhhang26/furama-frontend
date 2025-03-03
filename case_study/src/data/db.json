@@ -1,254 +1,223 @@
 {
-  "facilitiesList": [
-    {
-      "id": 1,
-      "imgSrc": "https://furamavietnam.com/wp-content/uploads/2018/03/Furama-Resort-Danang-Ocean-Suite-4-768x497.jpg",
-      "imgAlt": "Image 1",
-      "title": "PHÒNG PRESIDENTIAL SUITE",
-      "size": "130",
-      "information": {
-        "bedroom": "1 ",
-        "bed": "1 ",
-        "bathroom": "1 ",
-        "kitchen": "1 ",
-        "customer": "2 ",
-        "price": "6.000.000"
-      },
-      "feature": [
-        "Thang Máy Riêng",
-        "Truy Cập Internet Miễn Phí",
-        "Toàn Cảnh Hướng Biển"
-      ],
-      "typeId": 3
-    },
-    {
-      "id": 2,
-      "imgSrc": "https://furamavietnam.com/wp-content/uploads/2018/03/Furama-Resort-Danang-Ocean-Suite-4-768x497.jpg",
-      "imgAlt": "Image 2",
-      "title": "PHÒNG STUDIO SUITE HƯỚNG BIỂN",
-      "size": "85.2",
-      "information": {
-        "bedroom": "1 ",
-        "bed": "1",
-        "bathroom": "1",
-        "kitchen": "1",
-        "customer": "2 ",
-        "price": "6.000.000"
-      },
-      "feature": [
-        "Thang Máy Riêng",
-        "Truy Cập Internet Miễn Phí",
-        "Toàn Cảnh Hướng Biển"
-      ],
-      "typeId": 3
-    },
-    {
-      "id": 3,
-      "imgSrc": "https://furamavietnam.com/wp-content/uploads/2018/03/Furama-Resort-Danang-Ocean-Suite-4-768x497.jpg",
-      "imgAlt": "Image 3",
-      "title": "BIỆT THỰ HƯỚNG BIỂN CÓ HỒ BƠI RIÊNG",
-      "size": "900",
-      "information": {
-        "bedroom": "4 ",
-        "bed": "6",
-        "bathroom": "4",
-        "kitchen": "1",
-        "customer": "9",
-        "price": "15.000.000"
-      },
-      "feature": [
-        "Truy Cập Internet Miễn Phí",
-        "Toàn Cảnh Hướng Biển"
-      ],
-      "typeId": 2
-    },
-    {
-      "id": 4,
-      "imgSrc": "https://furamavietnam.com/wp-content/uploads/2018/03/Furama-Resort-Danang-Ocean-Suite-4-768x497.jpg",
-      "imgAlt": "Image 4",
-      "title": "BIỆT THỰ HƯỚNG VƯỜN CÓ HỒ BƠI RIÊNG",
-      "size": "502",
-      "information": {
-        "bedroom": "3",
-        "bed": "4 ",
-        "bathroom": "3",
-        "kitchen": "1",
-        "customer": "6",
-        "price": "10.000.000"
-      },
-      "feature": [
-        "Truy Cập Internet Miễn Phí",
-        "Toàn Cảnh Hướng Vườn"
-      ],
-      "typeId": 2
-    },
-    {
-      "id": 5,
-      "imgSrc": "https://furamavietnam.com/wp-content/uploads/2018/03/Furama-Resort-Danang-Ocean-Suite-4-768x497.jpg",
-      "imgAlt": "Image 5",
-      "title": "PHÒNG PRESIDENTIAL",
-      "size": "600",
-      "information": {
-        "bedroom": "1",
-        "bed": "1",
-        "bathroom": "1",
-        "kitchen": "1",
-        "customer": "2",
-        "price": "20.000.000"
-      },
-      "feature": [
-        "Thang Máy Riêng",
-        "Truy Cập Internet Miễn Phí",
-        "Toàn Cảnh Hướng Biển"
-      ],
-      "typeId": 3
-    },
-    {
-      "id": 6,
-      "imgSrc": "https://furamavietnam.com/wp-content/uploads/2018/03/Furama-Resort-Danang-Ocean-Suite-4-768x497.jpg",
-      "imgAlt": "Image 6",
-      "title": "VILLA HƯỚNG BIỂN",
-      "size": "307",
-      "information": {
-        "bedroom": "4 ",
-        "bed": "6",
-        "bathroom": "3",
-        "kitchen": "1",
-        "customer": "5",
-        "price": "9.000.000"
-      },
-      "feature": [
-        "Truy Cập Internet Miễn Phí",
-        "Toàn Cảnh Hướng Biển"
-      ],
-      "typeId": 1
-    },
-    {
-      "id": 7,
-      "imgSrc": "https://furamavietnam.com/wp-content/uploads/2018/03/Furama-Resort-Danang-Ocean-Suite-4-768x497.jpg",
-      "imgAlt": "Image 7",
-      "title": "VILLA HƯỚNG VƯỜN",
-      "size": "500",
-      "information": {
-        "bedroom": "5 ",
-        "bed": "6 ",
-        "bathroom": "3 ",
-        "kitchen": "1 ",
-        "customer": "12 ",
-        "price": "6.000.000 "
-      },
-      "feature": [
-        "Truy Cập Internet Miễn Phí",
-        "Toàn Cảnh Hướng Vườn"
-      ],
-      "typeId": 1
-    },
-    {
-      "id": 8,
-      "imgSrc": "https://furamavietnam.com/wp-content/uploads/2018/03/Furama-Resort-Danang-Ocean-Suite-4-768x497.jpg",
-      "imgAlt": "Image 8",
-      "title": "PHÒNG DELUXE HƯỚNG BIỂN",
-      "size": "43.7",
-      "information": {
-        "bedroom": "2",
-        "bed": "2",
-        "bathroom": "2",
-        "kitchen": "1",
-        "customer": "4",
-        "price": "6.000.000 "
-      },
-      "feature": [
-        "Thang Máy Riêng",
-        "Truy Cập Internet Miễn Phí",
-        "Toàn Cảnh Hướng Biển"
-      ],
-      "typeId": 3
-    },
-    {
-      "id": 9,
-      "imgSrc": "https://furamavietnam.com/wp-content/uploads/2018/03/Furama-Resort-Danang-Ocean-Suite-4-768x497.jpg",
-      "imgAlt": "Image 9",
-      "title": "VILLA TỔNG THỐNG",
-      "size": "130",
-      "information": {
-        "bedroom": "5 ",
-        "bed": "6 ",
-        "bathroom": "3 ",
-        "kitchen": "1 ",
-        "customer": "12 ",
-        "price": "6.000.000 "
-      },
-      "feature": [
-        "Truy Cập Internet Miễn Phí",
-        "Toàn Cảnh Hướng Vườn"
-      ],
-      "typeId": 1
-    }
-  ],
-  "types": [
-    {
-      "id": 1,
-      "name": "villa"
-    },
-    {
-      "id": 2,
-      "name": "resort"
-    },
-    {
-      "id": 3,
-      "name": "room"
-    }
-  ],
-  "accounts": [
-    {
-      "id": 1,
-      "username": "admin",
-      "password": "thanhhang26",
-      "email": "thanhhang26@gmail.com",
-      "avatar": "/image/avatar.jpg",
-      "role": "ADMIN"
-    },
-    {
-      "id": 2,
-      "username": "Thanh Hang",
-      "password": "hang123",
-      "email": "thanhhang@gmail.com",
-      "avatar": "https://i.pinimg.com/736x/8a/9d/6e/8a9d6e85a93b8b3a8002896da71882a3.jpg",
-      "role": "USER"
-    },
-    {
-      "email": "thanh@gmail.com",
-      "userName": "test",
-      "password": "12345",
-      "id": 3
-    }
-  ],
-  "contact": [
-    {
-      "id": 1,
-      "address": "103 - 105 Võ Nguyên Giáp, Khuê Mỹ, Ngũ Hành Sơn, Đà Nẵng, Việt Nam",
-      "phone": "84-236-3847 333 / 888",
-      "mail": "reservation@furamavietnam.com"
-    }
-  ],
-  "card": [
-    {
-      "id": 1,
-      "imgSrc": "https://furamavietnam.com/wp-content/uploads/2023/09/1.jpg",
-      "imgAlt": "Image 1",
-      "text": "Là khu nghỉ dưỡng danh giá nhất Việt Nam, Furama Resort Đà Nẵng tự hào phục vụ hàng nghìn du khách mỗi năm và đặc biệt là điểm đến ưa thích của nhiều hoàng gia, lãnh đạo doanh nghiệp quốc tế và khách nổi tiếng. Lên kế hoạch cho kỳ nghỉ của bạn với chúng tôi!"
-    },
-    {
-      "id": 2,
-      "imgSrc": "https://furamavietnam.com/wp-content/uploads/2023/09/1.jpg",
-      "imgAlt": "Image 2",
-      "text": "Trải nghiệm ẩm thực tại Furama có sự pha trộn độc đáo các món ăn truyền thống Việt Nam với hương vị ẩm thực châu Á, Ý và châu Âu cùng các món bò nhập khẩu thượng hạng tại đa dạng các nhà hàng quầy bar đẳng cấp được bao quanh bởi một khu vườn nhiệt đới hay hướng mình ra biển."
-    },
-    {
-      "id": 3,
-      "imgSrc": "https://furamavietnam.com/wp-content/uploads/2023/09/1.jpg",
-      "imgAlt": "Image 3",
-      "text": "Ẩn mình trong một góc nhỏ của khu nghỉ dưỡng, V-Senses Wellness & Spa đưa du khách đến một thiên đường thanh bình của sự thư giãn và trẻ hóa hoàn toàn. Hãy tận hưởng thời gian thư thái với những liệu trình trị liệu vô cùng đặc biệt tại V-senses Wellness & Spa."
-    }
-  ]
+	"facilitiesList": [
+		{
+			"id": 1,
+			"imgSrc": "https://furamavietnam.com/wp-content/uploads/2018/03/Furama-Resort-Danang-Ocean-Suite-4-768x497.jpg",
+			"imgAlt": "Image 1",
+			"title": "PHÒNG PRESIDENTIAL SUITE",
+			"size": "130",
+			"information": {
+				"bedroom": "1 ",
+				"bed": "1 ",
+				"bathroom": "1 ",
+				"kitchen": "1 ",
+				"customer": "2 ",
+				"price": "6.000.000"
+			},
+			"feature": ["Thang Máy Riêng", "Truy Cập Internet Miễn Phí", "Toàn Cảnh Hướng Biển"],
+			"typeId": 3
+		},
+		{
+			"id": 2,
+			"imgSrc": "https://furamavietnam.com/wp-content/uploads/2018/03/Furama-Resort-Danang-Ocean-Suite-4-768x497.jpg",
+			"imgAlt": "Image 2",
+			"title": "PHÒNG STUDIO SUITE HƯỚNG BIỂN",
+			"size": "85.2",
+			"information": {
+				"bedroom": "1 ",
+				"bed": "1",
+				"bathroom": "1",
+				"kitchen": "1",
+				"customer": "2 ",
+				"price": "6.000.000"
+			},
+			"feature": ["Thang Máy Riêng", "Truy Cập Internet Miễn Phí", "Toàn Cảnh Hướng Biển"],
+			"typeId": 3
+		},
+		{
+			"id": 3,
+			"imgSrc": "https://furamavietnam.com/wp-content/uploads/2018/03/Furama-Resort-Danang-Ocean-Suite-4-768x497.jpg",
+			"imgAlt": "Image 3",
+			"title": "BIỆT THỰ HƯỚNG BIỂN CÓ HỒ BƠI RIÊNG",
+			"size": "900",
+			"information": {
+				"bedroom": "4 ",
+				"bed": "6",
+				"bathroom": "4",
+				"kitchen": "1",
+				"customer": "9",
+				"price": "15.000.000"
+			},
+			"feature": ["Truy Cập Internet Miễn Phí", "Toàn Cảnh Hướng Biển"],
+			"typeId": 2
+		},
+		{
+			"id": 4,
+			"imgSrc": "https://furamavietnam.com/wp-content/uploads/2018/03/Furama-Resort-Danang-Ocean-Suite-4-768x497.jpg",
+			"imgAlt": "Image 4",
+			"title": "BIỆT THỰ HƯỚNG VƯỜN CÓ HỒ BƠI RIÊNG",
+			"size": "502",
+			"information": {
+				"bedroom": "3",
+				"bed": "4 ",
+				"bathroom": "3",
+				"kitchen": "1",
+				"customer": "6",
+				"price": "10.000.000"
+			},
+			"feature": ["Truy Cập Internet Miễn Phí", "Toàn Cảnh Hướng Vườn"],
+			"typeId": 2
+		},
+		{
+			"id": 5,
+			"imgSrc": "https://furamavietnam.com/wp-content/uploads/2018/03/Furama-Resort-Danang-Ocean-Suite-4-768x497.jpg",
+			"imgAlt": "Image 5",
+			"title": "PHÒNG PRESIDENTIAL",
+			"size": "600",
+			"information": {
+				"bedroom": "1",
+				"bed": "1",
+				"bathroom": "1",
+				"kitchen": "1",
+				"customer": "2",
+				"price": "20.000.000"
+			},
+			"feature": ["Thang Máy Riêng", "Truy Cập Internet Miễn Phí", "Toàn Cảnh Hướng Biển"],
+			"typeId": 3
+		},
+		{
+			"id": 6,
+			"imgSrc": "https://furamavietnam.com/wp-content/uploads/2018/03/Furama-Resort-Danang-Ocean-Suite-4-768x497.jpg",
+			"imgAlt": "Image 6",
+			"title": "VILLA HƯỚNG BIỂN",
+			"size": "307",
+			"information": {
+				"bedroom": "4 ",
+				"bed": "6",
+				"bathroom": "3",
+				"kitchen": "1",
+				"customer": "5",
+				"price": "9.000.000"
+			},
+			"feature": ["Truy Cập Internet Miễn Phí", "Toàn Cảnh Hướng Biển"],
+			"typeId": 1
+		},
+		{
+			"id": 7,
+			"imgSrc": "https://furamavietnam.com/wp-content/uploads/2018/03/Furama-Resort-Danang-Ocean-Suite-4-768x497.jpg",
+			"imgAlt": "Image 7",
+			"title": "VILLA HƯỚNG VƯỜN",
+			"size": "500",
+			"information": {
+				"bedroom": "5 ",
+				"bed": "6 ",
+				"bathroom": "3 ",
+				"kitchen": "1 ",
+				"customer": "12 ",
+				"price": "6.000.000 "
+			},
+			"feature": ["Truy Cập Internet Miễn Phí", "Toàn Cảnh Hướng Vườn"],
+			"typeId": 1
+		},
+		{
+			"id": 8,
+			"imgSrc": "https://furamavietnam.com/wp-content/uploads/2018/03/Furama-Resort-Danang-Ocean-Suite-4-768x497.jpg",
+			"imgAlt": "Image 8",
+			"title": "PHÒNG DELUXE HƯỚNG BIỂN",
+			"size": "43.7",
+			"information": {
+				"bedroom": "2",
+				"bed": "2",
+				"bathroom": "2",
+				"kitchen": "1",
+				"customer": "4",
+				"price": "6.000.000 "
+			},
+			"feature": ["Thang Máy Riêng", "Truy Cập Internet Miễn Phí", "Toàn Cảnh Hướng Biển"],
+			"typeId": 3
+		},
+		{
+			"id": 9,
+			"imgSrc": "https://furamavietnam.com/wp-content/uploads/2018/03/Furama-Resort-Danang-Ocean-Suite-4-768x497.jpg",
+			"imgAlt": "Image 9",
+			"title": "VILLA TỔNG THỐNG",
+			"size": "130",
+			"information": {
+				"bedroom": "5 ",
+				"bed": "6 ",
+				"bathroom": "3 ",
+				"kitchen": "1 ",
+				"customer": "12 ",
+				"price": "6.000.000 "
+			},
+			"feature": ["Truy Cập Internet Miễn Phí", "Toàn Cảnh Hướng Vườn"],
+			"typeId": 1
+		}
+	],
+	"types": [
+		{
+			"id": 1,
+			"name": "villa"
+		},
+		{
+			"id": 2,
+			"name": "resort"
+		},
+		{
+			"id": 3,
+			"name": "room"
+		}
+	],
+	"accounts": [
+		{
+			"id": 1,
+			"userName": "admin",
+			"password": "thanhhang26",
+			"email": "thanhhang26@gmail.com",
+			"avatar": "/image/avatar1.jpg",
+			"role": "ADMIN"
+		},
+		{
+			"id": 2,
+			"userName": "Thanh Hang",
+			"password": "hang123",
+			"email": "thanhhang@gmail.com",
+			"avatar": "/image/avatar.jpg",
+			"role": "USER"
+		},
+		{
+			"email": "eirian@livinitlarge.net",
+			"userName": "hangdinh",
+			"password": "12345",
+			"id": 3
+		}
+	],
+	"contact": [
+		{
+			"id": 1,
+			"address": "103 - 105 Võ Nguyên Giáp, Khuê Mỹ, Ngũ Hành Sơn, Đà Nẵng, Việt Nam",
+			"phone": "84-236-3847 333 / 888",
+			"mail": "reservation@furamavietnam.com"
+		}
+	],
+	"card": [
+		{
+			"id": 1,
+			"imgSrc": "https://furamavietnam.com/wp-content/uploads/2023/09/1.jpg",
+			"imgAlt": "Image 1",
+			"text": "Là khu nghỉ dưỡng danh giá nhất Việt Nam, Furama Resort Đà Nẵng tự hào phục vụ hàng nghìn du khách mỗi năm và đặc biệt là điểm đến ưa thích của nhiều hoàng gia, lãnh đạo doanh nghiệp quốc tế và khách nổi tiếng. Lên kế hoạch cho kỳ nghỉ của bạn với chúng tôi!"
+		},
+		{
+			"id": 2,
+			"imgSrc": "https://furamavietnam.com/wp-content/uploads/2023/09/1.jpg",
+			"imgAlt": "Image 2",
+			"text": "Trải nghiệm ẩm thực tại Furama có sự pha trộn độc đáo các món ăn truyền thống Việt Nam với hương vị ẩm thực châu Á, Ý và châu Âu cùng các món bò nhập khẩu thượng hạng tại đa dạng các nhà hàng quầy bar đẳng cấp được bao quanh bởi một khu vườn nhiệt đới hay hướng mình ra biển."
+		},
+		{
+			"id": 3,
+			"imgSrc": "https://furamavietnam.com/wp-content/uploads/2023/09/1.jpg",
+			"imgAlt": "Image 3",
+			"text": "Ẩn mình trong một góc nhỏ của khu nghỉ dưỡng, V-Senses Wellness & Spa đưa du khách đến một thiên đường thanh bình của sự thư giãn và trẻ hóa hoàn toàn. Hãy tận hưởng thời gian thư thái với những liệu trình trị liệu vô cùng đặc biệt tại V-senses Wellness & Spa."
+		}
+	]
 }

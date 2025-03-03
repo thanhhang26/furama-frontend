@@ -21,6 +21,7 @@ function App() {
 		<>
 			<Routes>
 				<Route element={<HomeLayout />}>
+					<Route path="/" element={<FuramaComponent />} />
 					<Route path={"/furama"} element={<FuramaComponent />}></Route>
 					<Route path={"/homepage"} element={<Homepage />}></Route>
 					<Route path={"/facilities"} element={account?.role === "ADMIN" ? <FacilitiesList /> : <FacilitiesUser />} />

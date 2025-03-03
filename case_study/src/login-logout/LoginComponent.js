@@ -10,7 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { Col, Row } from "react-bootstrap";
 
 function LoginComponent() {
-	const [user] = useState({ username: "", password: "" });
+	const [user] = useState({ userName: "", password: "" });
 	const account = useSelector((state) => state?.user?.account);
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
@@ -31,7 +31,7 @@ function LoginComponent() {
 	};
 
 	const validationSchema = Yup.object({
-		username: Yup.string().required("Không được để trống"),
+		userName: Yup.string().required("Không được để trống"),
 		password: Yup.string().required("Không được để trống"),
 	});
 
@@ -50,7 +50,7 @@ function LoginComponent() {
 					<Form>
 						<div className="mb-3">
 							<label className="form-label">Tên đăng nhập hoặc email:</label>
-							<Field type="text" name="username" className="form-control" placeholder="Tên đăng nhập hoặc email" />
+							<Field type="text" name="userName" className="form-control" placeholder="Tên đăng nhập hoặc email" />
 							<ErrorMessage name="username" component="div" className="text-danger mt-2" />
 						</div>
 						<div className="mb-3">

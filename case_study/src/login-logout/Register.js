@@ -22,9 +22,9 @@ function Register() {
 			password: values.password,
 		});
 		if (success) {
-			toast.success("Đăng ký thành công!");
+			toast.success("Đăng ký thành công! Vui lòng đăng nhập lại");
 			resetForm();
-			navigate("/furama");
+			navigate("/login");
 		} else {
 			toast.error("Lỗi đăng ký. Vui lòng thử lại!");
 		}

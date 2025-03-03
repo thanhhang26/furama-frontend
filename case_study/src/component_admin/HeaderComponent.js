@@ -36,7 +36,7 @@ function HeaderComponent() {
 						<ul className="nav nav-pills mt-3">
 							<li className="nav-item me-3">
 								<img
-									src={account?.avatar}
+									src={account?.avatar ? account.avatar : "/image/avatar.jpg"}
 									alt="avatar"
 									width={40}
 									height={40}
@@ -47,7 +47,7 @@ function HeaderComponent() {
 								/>
 							</li>
 							<li className="nav-item">
-								<Link className="btn btn-custom-outline ms-1 " id="logoutButton" onClick={handleLogout} to={"/login"}>
+								<Link className="btn btn-custom-outline ms-1 " id="logoutButton" onClick={handleLogout} to={"/furama"}>
 									Đăng xuất
 								</Link>
 							</li>
