@@ -9,8 +9,8 @@ import Pagination from "react-bootstrap/Pagination";
 import { PAGE_SIZE } from "../service/constant";
 import { FiAlertCircle } from "react-icons/fi";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Popover from "react-bootstrap/Popover";
 import Tooltip from "react-bootstrap/Tooltip";
+import { FaSearch, FaSyncAlt } from "react-icons/fa";
 
 function FacilitiesUser() {
 	const [facilitiesList, setFacilitiesList] = useState([]);
@@ -20,6 +20,8 @@ function FacilitiesUser() {
 	const [totalSize, setTotalSize] = useState(PAGE_SIZE);
 	const [page, setPage] = useState(1);
 	const [totalPage, setTotalPage] = useState(0);
+	const [reload, setReload] = useState(true);
+
 	useEffect(() => {
 		const fetchData = async () => {
 			const [data, totalRecords] = await getAllFacilities(page, totalSize);
@@ -29,7 +31,7 @@ function FacilitiesUser() {
 			setTotalPage(Math.ceil(totalRecords / PAGE_SIZE));
 		};
 		fetchData();
-	}, [show, page]);
+	}, [show, page, reload]);
 
 	const searchNameRef = useRef();
 	const searchTypeRef = useRef();
@@ -60,6 +62,9 @@ function FacilitiesUser() {
 	const handleLast = () => {
 		setPage(totalPage);
 	};
+	const reloadData = () => {
+		setReload(!reload);
+	};
 	return (
 		<div>
 			<div className="mb-4" id="titleImg">
@@ -72,17 +77,20 @@ function FacilitiesUser() {
 				<div className="d-flex align-items-center mb-4">
 					<div className="flex-shrink-0 ms-3">
 						<div className="input-group mb-3">
-							<input name="searchName" type="text" className="form-control" placeholder="Search" ref={searchNameRef} />
-							<select name="typeSearch" className="form-select" id="type" ref={searchTypeRef}>
-								<option value="">All</option>
+							<input name="searchName" type="text" className="form-control border-end-0" placeholder="Tìm kiếm" ref={searchNameRef} />
+							<select name="typeSearch" className="form-select border-start-0 border-end-0" id="type" ref={searchTypeRef}>
+								<option value="">Tất cả</option>
 								{type.map((e) => (
 									<option key={e.id} value={e.id}>
 										{e.name}
 									</option>
 								))}
 							</select>
-							<button className="btn btn-outline-secondary" type="button" onClick={handleSearchName}>
-								Search
+							<button className="btn btn btn-custom-outline px-3 border-0" type="button" onClick={handleSearchName}>
+								<FaSearch className="me-1" />
+							</button>
+							<button className="btn btn-custom-outline px-3 border-0" type="button" onClick={reloadData}>
+								<FaSyncAlt />
 							</button>
 						</div>
 					</div>

@@ -50,13 +50,13 @@ $tooltip-max-width: 250px;
 .btn-custom-outline {
 	background-color: transparent;
 	border: 2px solid #046056;
-	color: #046056 ;
+	color: #046056 !important ;
 	transition: all 0.2s ease-in-out;
 }
 
 .btn-custom-outline:hover {
 	background-color: #046056;
-	color: white;
+	color: white !important;
 }
 .footer-container {
 	background-color: #b0d3c7;
@@ -145,42 +145,38 @@ $tooltip-max-width: 250px;
 	height: 40px;
 }
 
-// #pagination {
-// 	.pagination {
-// 		gap: 5px; // Khoảng cách giữa các nút
-// 	}
+#pagination {
+	.pagination {
+		gap: 5px; // Khoảng cách giữa các nút
+	}
 
-// 	.page-item {
-// 		transition: all 0.3s ease-in-out; // Hiệu ứng mượt khi hover
-// 		border-radius: 8px; // Bo tròn góc
-// 		overflow: hidden;
+	.page-item {
+		transition: all 0.3s ease-in-out; // Hiệu ứng mượt khi hover
+		overflow: hidden;
 
-// 		.page-link {
-// 			padding: 8px 14px;
-// 			border-radius: 8px;
-// 			color: #046056; // Màu chủ đạo
-// 			border: none;
-// 			background-color: white;
-// 			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); // Đổ bóng nhẹ
+		.page-link {
+			padding: 8px 14px;
+			color: #046056; // Màu chủ đạo
+			border: none;
+			background-color: white;
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); // Đổ bóng nhẹ
 
-// 			&:hover {
-// 				background-color: #046056;
-// 				color: white;
-// 				transform: translateY(-2px); // Hiệu ứng nâng lên
-// 			}
-// 		}
+			&:hover {
+				background-color: #046056;
+				color: white;
+			}
+		}
 
-// 		&.active .page-link {
-// 			background-color: #046056 !important;
-// 			color: white !important;
-// 			font-weight: bold;
-// 			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-// 		}
+		&.active .page-link {
+			background-color: #046056 !important;
+			color: white !important;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+		}
 
-// 		&.disabled .page-link {
-// 			background-color: #ccc;
-// 			color: white;
-// 			cursor: not-allowed;
-// 		}
-// 	}
-// }
+		&.disabled .page-link {
+			background-color: #ccc;
+			color: white;
+			cursor: not-allowed;
+		}
+	}
+}

@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { addNewFacilities } from "../service/facilitiesService";
+import { addNewFacilities, fetchFacilities } from "../service/facilitiesService";
 import { Link, useNavigate } from "react-router-dom";
 import { getTypeById } from "../service/typesService";
 import * as Yup from "yup";
+import { uploadImageToCloudinary } from "../service/imageService";
+import { Col, Row } from "react-bootstrap";
 
 function AddComponent() {
 	const [facilities, setFacilities] = useState({
@@ -18,6 +20,7 @@ function AddComponent() {
 			customer: "",
 			price: "",
 		},
+		feature: "",
 		image: null,
 	});
 
@@ -35,9 +38,16 @@ function AddComponent() {
 	const navigate = useNavigate();
 
 	const handleSubmit = async (values) => {
-		const facilities = { ...values };
+		const facilities = { ...values, image: values.image };
 		await addNewFacilities(facilities);
+		const updatedList = await fetchFacilities();
 		navigate("/facilities");
+	};
+
+	const handleUpload = async (event, setFieldValue) => {
+		const file = event.target.files[0];
+		const imageUrl = await uploadImageToCloudinary(file); // Gửi file ảnh đến Cloudinary API để upload. Nhận lại URL ảnh do Cloudinary trả về.
+		setFieldValue("image", imageUrl); // Lưu URL ảnh vào Formik
 	};
 
 	const validationSchema = Yup.object({
@@ -55,7 +65,7 @@ function AddComponent() {
 	});
 
 	return (
-		<div className="container mt-4">
+		<div className="container mt-4 mb-4">
 			<div className="card shadow p-4">
 				<h3 className="card-title text-center">THÊM MỚI CÁC PHÒNG</h3>
 				<Formik initialValues={facilities} onSubmit={handleSubmit} validationSchema={validationSchema}>
@@ -119,20 +129,34 @@ function AddComponent() {
 
 							<div className="mb-3">
 								<label className="form-label">Giá tiền (VNĐ):</label>
+								<Row>
+									<Col>
+										<Field type="text" name="feature" className="form-control" placeholder="Nhập giá" />
+										<ErrorMessage name="feature" component="div" className="text-danger mt-2" />
+									</Col>
+									<Col>
+										<Field type="text" name="feature" className="form-control" placeholder="Nhập giá" />
+										<ErrorMessage name="feature" component="div" className="text-danger mt-2" />
+									</Col>
+								</Row>
+							</div>
+
+							<div className="mb-3">
+								<label className="form-label">Tính năng</label>
 								<Field type="text" name="information.price" className="form-control" placeholder="Nhập giá" />
 								<ErrorMessage name="information.price" component="div" className="text-danger mt-2" />
 							</div>
 
 							<div className="mb-3">
 								<label className="form-label">Cập nhật ảnh:</label>
-								<input type="file" className="form-control" />
+								<input type="file" className="form-control" accept="image/*" onChange={(event) => handleUpload(event, setFieldValue)} />
 							</div>
 
 							<div className="text-start">
-								<button type="submit" className="btn btn-success">
+								<button type="submit" className="btn btn-custom-outline">
 									Lưu
 								</button>
-								<Link type="button" className="btn btn-secondary ms-3" to={"/facilities"}>
+								<Link type="button" className="btn btn-outline-secondary ms-3" to={"/facilities"}>
 									Trở về
 								</Link>
 							</div>

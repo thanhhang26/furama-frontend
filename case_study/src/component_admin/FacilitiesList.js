@@ -10,8 +10,9 @@ import DeleteComponent from "./DeleteComponent";
 import { PAGE_SIZE } from "../service/constant";
 import { FiAlertCircle } from "react-icons/fi";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Popover from "react-bootstrap/Popover";
 import Tooltip from "react-bootstrap/Tooltip";
+import { FaSearch, FaSyncAlt } from "react-icons/fa";
+import CustomSelect from "./CustomSelect";
 
 function FacilitiesList() {
 	const [facilitiesList, setFacilitiesList] = useState([]);
@@ -21,6 +22,8 @@ function FacilitiesList() {
 	const [totalSize, setTotalSize] = useState(PAGE_SIZE);
 	const [page, setPage] = useState(1);
 	const [totalPage, setTotalPage] = useState(0);
+	const [reload, setReload] = useState(true);
+	const [selectedFacilitiesOption, setSelectedFacilitiesOption] = useState(null);
 	useEffect(() => {
 		window.scrollTo(0, 0); // Trượt lên đầu trang khi component được render
 		const fetchData = async () => {
@@ -31,16 +34,17 @@ function FacilitiesList() {
 			setTotalPage(Math.ceil(totalRecords / PAGE_SIZE));
 		};
 		fetchData();
-	}, [show, page]);
+	}, [show, page, reload]);
 
-	const searchNameRef = useRef();
 	const searchTypeRef = useRef();
 
 	const handleSearchName = async () => {
-		let name = searchNameRef.current.value.trim();
+		let name = selectedFacilitiesOption?.value;
 		let typeId = searchTypeRef.current.value;
 
-		setFacilitiesList(await searchByName(name, typeId));
+		const [data, totalRecords] = await searchByName(name, typeId, page, PAGE_SIZE);
+		setFacilitiesList(() => [...data]);
+		setTotalPage(Math.ceil(totalRecords / PAGE_SIZE));
 	};
 	const showModalDelete = (facilities) => {
 		setDeleteFacilities(facilities);
@@ -62,33 +66,55 @@ function FacilitiesList() {
 	const handleLast = () => {
 		setPage(totalPage);
 	};
+	const reloadData = () => {
+		setSelectedFacilitiesOption(null); // Xóa nội dung CustomSelect
+		searchTypeRef.current.value = ""; // Reset select về mặc định
+		setReload(!reload);
+	};
 	return (
 		<div>
-			<div className="mb-4" id="titleImg">
-				<h1 className="text-center shadow p-3 mb-5" id="titleText">
+			<div>
+				<div className="input-group">
+					<CustomSelect
+						options={facilitiesList.map((f) => ({ label: f.title, value: f.id }))}
+						value={selectedFacilitiesOption}
+						placeholder="Tìm kiếm"
+						onSelect={(option) => setSelectedFacilitiesOption(option)}
+					/>
+					<select name="typeSearch" className="form-select border-start-0 border-end-0" style={{ maxWidth: "230px" }} id="type" ref={searchTypeRef}>
+						<option value="">Tất cả</option>
+						{type.map((e) => (
+							<option key={e.id} value={e.id}>
+								{e.name}
+							</option>
+						))}
+					</select>
+					<button className="btn btn-custom-outline px-3 border-0" type="button" onClick={handleSearchName}>
+						<FaSearch className="me-1" />
+					</button>
+					<button className="btn btn-custom-outline px-3 border-0 rounded-0" type="button" onClick={reloadData}>
+						<FaSyncAlt />
+					</button>
+				</div>
+			</div>
+
+			<div className="position-relative text-center mb-4" id="titleImg">
+				<img
+					src="https://sktravel.com.vn/wp-content/uploads/2021/05/top-4-khach-san-resort-co-khong-gian-thien-nhien-dep-nhat-nha-trang.jpg"
+					alt="Room Banner"
+					className="img-fluid shadow-lg"
+				/>
+				<h1 className="position-absolute top-50 start-50 translate-middle text-white fw-bold p-3" id="titleText">
 					CÁC LOẠI PHÒNG
 				</h1>
 			</div>
 
 			<div className="container">
 				<div className="d-flex align-items-center mb-4">
-					<div className="flex-shrink-0 ms-3">
-						<div className="input-group mb-3">
-							<input name="searchName" type="text" className="form-control" placeholder="Search" ref={searchNameRef} />
-							<select name="typeSearch" className="form-select" id="type" ref={searchTypeRef}>
-								<option value="">All</option>
-								{type.map((e) => (
-									<option key={e.id} value={e.id}>
-										{e.name}
-									</option>
-								))}
-							</select>
-							<button className="btn btn-outline-secondary" type="button" onClick={handleSearchName}>
-								Search
-							</button>
-						</div>
-						<div className="d-flex justify-content-start">
-							<Link className="btn btn-primary mt-3 mb-3 px-4" id="add-link" to="/add_new">
+					<div className="row align-items-center mb-4">
+						{/* Nút "Thêm mới" căn thẳng hàng */}
+						<div>
+							<Link className="btn btn-custom-outline px-4 mt-4" id="add-link" to="/add_new">
 								Thêm mới
 							</Link>
 						</div>
@@ -101,7 +127,7 @@ function FacilitiesList() {
 							facilitiesList.map((f) => (
 								<Col key={f.id}>
 									<Card className="h-100 d-flex flex-column shadow">
-										<Card.Img variant="top" src={f.imgSrc} alt={f.imgAlt} />
+										<Card.Img variant="top" src={f.image} alt={f.imgAlt} />
 										<Card.Body className="d-flex flex-column">
 											<Card.Title>{f.title}</Card.Title>
 											<Card.Text>
