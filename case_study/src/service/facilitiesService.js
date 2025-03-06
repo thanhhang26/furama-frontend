@@ -11,15 +11,15 @@ export async function getAllFacilities(page, limit) {
 	}
 }
 
-export async function searchByName(name, typeId, page, limit) {
+export async function searchByName(facilitiesId, typeId, page, limit) {
 	try {
 		let response = [];
-		if (name && typeId) {
-			response = await axios.get(`${BASE_URL}/facilitiesList?_page=${page}&_limit=${limit}typeId=${typeId}&title_like=${name}`);
+		if (facilitiesId && typeId) {
+			response = await axios.get(`${BASE_URL}/facilitiesList?id=${facilitiesId}&_page=${page}&_limit=${limit}&typeId=${typeId}`);
 		} else if (typeId) {
 			response = await axios.get(`${BASE_URL}/facilitiesList?_page=${page}&_limit=${limit}&typeId=${typeId}`);
-		} else if (name) {
-			response = await axios.get(`${BASE_URL}/facilitiesList?_page=${page}&_limit=${limit}&title_like=${name}`);
+		} else if (facilitiesId) {
+			response = await axios.get(`${BASE_URL}/facilitiesList?id=${facilitiesId}&_page=${page}&_limit=${limit}`);
 		} else {
 			response = await axios.get(`${BASE_URL}/facilitiesList`);
 		}
@@ -38,12 +38,6 @@ export async function getFacilitiesById(id) {
 export async function addNewFacilities(facilities) {
 	try {
 		const response = await axios.post(`${BASE_URL}/facilitiesList`, facilities);
-		return response.data;
-	} catch (e) {}
-}
-export async function fetchFacilities() {
-	try {
-		const response = await axios.get(`${BASE_URL}/facilitiesList`);
 		return response.data;
 	} catch (e) {}
 }

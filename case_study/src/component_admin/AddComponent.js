@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import { addNewFacilities, fetchFacilities } from "../service/facilitiesService";
+import { Formik, Form, Field, ErrorMessage, FieldArray } from "formik";
+import { addNewFacilities } from "../service/facilitiesService";
 import { Link, useNavigate } from "react-router-dom";
 import { getTypeById } from "../service/typesService";
 import * as Yup from "yup";
 import { uploadImageToCloudinary } from "../service/imageService";
-import { Col, Row } from "react-bootstrap";
+import { Form as BootstrapForm, Button, Col, Row } from "react-bootstrap";
+import { toast } from "react-toastify";
 
 function AddComponent() {
 	const [facilities, setFacilities] = useState({
@@ -20,33 +21,40 @@ function AddComponent() {
 			customer: "",
 			price: "",
 		},
-		feature: "",
+		features: [],
 		image: null,
 	});
 
 	const [types, setTypes] = useState([]);
+	const [previewImg, setPreviewImg] = useState(null);
 
 	useEffect(() => {
 		window.scrollTo(0, 0); // Trượt lên đầu trang khi component được render
 		const fetchData = async () => {
 			const list = await getTypeById();
 			setTypes(list);
+			setFacilities((prev) => ({ ...prev, image: previewImg }));
 		};
 		fetchData();
-	}, []);
+	}, [previewImg]);
 
 	const navigate = useNavigate();
 
 	const handleSubmit = async (values) => {
 		const facilities = { ...values, image: values.image };
 		await addNewFacilities(facilities);
-		const updatedList = await fetchFacilities();
 		navigate("/facilities");
 	};
 
 	const handleUpload = async (event, setFieldValue) => {
 		const file = event.target.files[0];
 		const imageUrl = await uploadImageToCloudinary(file); // Gửi file ảnh đến Cloudinary API để upload. Nhận lại URL ảnh do Cloudinary trả về.
+		if (imageUrl) {
+			setPreviewImg(imageUrl);
+			setFieldValue("image", imageUrl);
+		} else {
+			toast.error("Upload image failed!");
+		}
 		setFieldValue("image", imageUrl); // Lưu URL ảnh vào Formik
 	};
 
@@ -62,6 +70,7 @@ function AddComponent() {
 			customer: Yup.number().typeError("Số lượng khách phải là số").required("Nhập số lượng khách"),
 			price: Yup.number().typeError("Giá tiền phải là số").required("Nhập giá tiền"),
 		}),
+		features: Yup.array().of(Yup.string()),
 	});
 
 	return (
@@ -69,7 +78,7 @@ function AddComponent() {
 			<div className="card shadow p-4">
 				<h3 className="card-title text-center">THÊM MỚI CÁC PHÒNG</h3>
 				<Formik initialValues={facilities} onSubmit={handleSubmit} validationSchema={validationSchema}>
-					{({ setFieldValue }) => (
+					{({ values, handleChange, handleBlur, setFieldValue }) => (
 						<Form>
 							<div className="mb-3">
 								<label className="form-label">Loại dịch vụ:</label>
@@ -129,27 +138,50 @@ function AddComponent() {
 
 							<div className="mb-3">
 								<label className="form-label">Giá tiền (VNĐ):</label>
-								<Row>
-									<Col>
-										<Field type="text" name="feature" className="form-control" placeholder="Nhập giá" />
-										<ErrorMessage name="feature" component="div" className="text-danger mt-2" />
-									</Col>
-									<Col>
-										<Field type="text" name="feature" className="form-control" placeholder="Nhập giá" />
-										<ErrorMessage name="feature" component="div" className="text-danger mt-2" />
-									</Col>
-								</Row>
-							</div>
 
-							<div className="mb-3">
-								<label className="form-label">Tính năng</label>
 								<Field type="text" name="information.price" className="form-control" placeholder="Nhập giá" />
 								<ErrorMessage name="information.price" component="div" className="text-danger mt-2" />
 							</div>
 
 							<div className="mb-3">
+								<label className="form-label">Tính năng:</label>
+								<FieldArray name="features">
+									{({ push, remove }) => (
+										<div>
+											{values.features.map((_, index) => (
+												<Row key={index} className="mb-2">
+													<Col md={8}>
+														<BootstrapForm.Group>
+															<Field
+																name={`features.${index}`}
+																as={BootstrapForm.Control}
+																type="text"
+																placeholder={`Tính năng ${index + 1}`}
+																onChange={handleChange}
+																onBlur={handleBlur}
+															/>
+															<ErrorMessage name={`features.${index}`} component="div" className="text-danger" />
+														</BootstrapForm.Group>
+													</Col>
+													<Col md={4}>
+														<Button variant="danger" onClick={() => remove(index)}>
+															Xóa
+														</Button>
+													</Col>
+												</Row>
+											))}
+											<Button variant="success" onClick={() => push("")}>
+												+ Thêm Tính Năng
+											</Button>
+										</div>
+									)}
+								</FieldArray>
+							</div>
+
+							<div className="mb-3">
 								<label className="form-label">Cập nhật ảnh:</label>
 								<input type="file" className="form-control" accept="image/*" onChange={(event) => handleUpload(event, setFieldValue)} />
+								{previewImg && <img src={previewImg} width={500} height={300} className="mt-3 max-h-[400px] object-contain" alt="imgSrc" />}
 							</div>
 
 							<div className="text-start">

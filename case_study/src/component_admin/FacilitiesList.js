@@ -24,10 +24,13 @@ function FacilitiesList() {
 	const [totalPage, setTotalPage] = useState(0);
 	const [reload, setReload] = useState(true);
 	const [selectedFacilitiesOption, setSelectedFacilitiesOption] = useState(null);
+
 	useEffect(() => {
 		window.scrollTo(0, 0); // Trượt lên đầu trang khi component được render
 		const fetchData = async () => {
 			const [data, totalRecords] = await getAllFacilities(page, totalSize);
+			console.log(data, totalRecords);
+
 			setFacilitiesList(data);
 
 			setType(await getAllTypes());
@@ -39,13 +42,14 @@ function FacilitiesList() {
 	const searchTypeRef = useRef();
 
 	const handleSearchName = async () => {
-		let name = selectedFacilitiesOption?.value;
+		let facilitiesId = selectedFacilitiesOption?.value;
 		let typeId = searchTypeRef.current.value;
 
-		const [data, totalRecords] = await searchByName(name, typeId, page, PAGE_SIZE);
-		setFacilitiesList(() => [...data]);
+		const [data, totalRecords] = await searchByName(facilitiesId, typeId, page, PAGE_SIZE);
 		setTotalPage(Math.ceil(totalRecords / PAGE_SIZE));
+		setFacilitiesList(data);
 	};
+
 	const showModalDelete = (facilities) => {
 		setDeleteFacilities(facilities);
 		setShow(true);
@@ -146,7 +150,7 @@ function FacilitiesList() {
 															overlay={
 																<Tooltip id={`tooltip-${f.id}`}>
 																	<ul className="px-3 py-2 m-0" style={{ textAlign: "left" }}>
-																		{f.feature?.map((item, index) => (
+																		{f.features?.map((item, index) => (
 																			<li key={index}>{item}</li>
 																		))}
 																	</ul>

@@ -7,7 +7,6 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { toast } from "react-toastify";
 import * as Yup from "yup";
 import "react-toastify/dist/ReactToastify.css";
-import { Col, Row } from "react-bootstrap";
 
 function LoginComponent() {
 	const [user] = useState({ userName: "", password: "" });
