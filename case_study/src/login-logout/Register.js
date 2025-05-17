@@ -20,6 +20,7 @@ function Register() {
 			email: values.email,
 			userName: values.userName,
 			password: values.password,
+			role: "ADMIN",
 		});
 		if (success) {
 			toast.success("Đăng ký thành công! Vui lòng đăng nhập lại");

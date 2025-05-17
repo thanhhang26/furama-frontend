@@ -18,18 +18,13 @@ function NavigationComponent() {
 						</Link>
 					</li>
 					<li className="nav-item">
-						<Link className="nav-link text-white" to="/">
-							Sapa
+						<Link className="nav-link text-white" to="/bookingAdmin">
+							Quản lý đặt phòng
 						</Link>
 					</li>
 					<li className="nav-item">
-						<Link className="nav-link text-white" to="/">
-							Các loại dịch vụ khác
-						</Link>
-					</li>
-					<li className="nav-item">
-						<Link className="nav-link text-white" to="/">
-							Liên hệ
+						<Link className="nav-link text-white" to="/contactAdmin">
+							Quản lý liên hệ
 						</Link>
 					</li>
 				</ul>

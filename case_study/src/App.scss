@@ -58,6 +58,19 @@ $tooltip-max-width: 250px;
 	background-color: #046056;
 	color: white !important;
 }
+
+.btn-custom {
+	background-color: white;
+	border: 2px solid white !important;
+	color: black !important;
+	transition: all 0.2s ease-in-out;
+}
+
+.btn-custom:hover {
+	background-color: #046056;
+	border: 2px solid white !important;
+	color: white !important;
+}
 .footer-container {
 	background-color: #b0d3c7;
 	padding: 40px 10%;

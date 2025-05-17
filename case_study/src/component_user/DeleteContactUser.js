@@ -1,17 +1,17 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import { deleteFacilitiesById } from "../service/facilitiesService";
+import { deleteContactById } from "../service/contactService";
 
-function DeleteComponent({ show, closeModal, facilities }) {
+function DeleteContactUser({ show, closeModal, contact }) {
 	const handleClose = async () => {
 		await closeModal();
 	};
 
 	const handleDelete = async () => {
 		try {
-			if (facilities?.id) {
-				await deleteFacilitiesById(facilities.id);
+			if (contact?.id) {
+				await deleteContactById(contact.id);
 				handleClose();
 			} else {
 				console.error("No ID provided");
@@ -25,12 +25,12 @@ function DeleteComponent({ show, closeModal, facilities }) {
 		<>
 			<Modal show={show} onHide={handleClose}>
 				<Modal.Header closeButton>
-					<Modal.Title>Xoá dịch vụ</Modal.Title>
+					<Modal.Title>Xoá liên hệ</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
-					Bạn có muốn xoá dịch vụ{" "}
+					Bạn có muốn xoá liên hệ{" "}
 					<strong>
-						{facilities?.id} - {facilities?.title}
+						{contact?.id} - {contact?.name}
 					</strong>
 					?
 				</Modal.Body>
@@ -47,4 +47,4 @@ function DeleteComponent({ show, closeModal, facilities }) {
 	);
 }
 
-export default DeleteComponent;
+export default DeleteContactUser;

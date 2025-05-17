@@ -5,9 +5,18 @@ import { GiPositionMarker } from "react-icons/gi";
 import { FaPhone } from "react-icons/fa6";
 import { IoMdMail } from "react-icons/io";
 import * as Yup from "yup";
+import { addNewContacts } from "../service/contactService";
+import { useNavigate } from "react-router-dom";
 
 function ContactUser() {
 	const [contact, setContact] = useState([]);
+	const [contactList, setContactList] = useState({
+		name: "",
+		email: "",
+		phone: "",
+		content: "",
+	});
+
 	useEffect(() => {
 		const fetchData = async () => {
 			const data = await getAllContact();
@@ -17,14 +26,20 @@ function ContactUser() {
 	}, []);
 
 	const validationSchema = Yup.object({
-		name: Yup.string().required("Vui lòng nhập họ tên"),
-		email: Yup.string().required("Vui lòng nhập email"),
+		name: Yup.string().trim().required("Vui lòng nhập họ tên"),
+		email: Yup.string().trim().email("Email không hợp lệ").required("Vui lòng nhập email"),
 		phone: Yup.string()
-			.matches(/^[0-9]+$/, "Số điện thoại chỉ được chứa số")
-			.min(10, "Số điện thoại phải có ít nhất 10 chữ số")
-			.max(11, "Số điện thoại không được quá 11 chữ số")
+			.trim()
+			.matches(/^0\d{9}$/, "Số điện thoại phải có đúng 10 chữ số và bắt đầu bằng số 0")
 			.required("Vui lòng nhập số điện thoại"),
 	});
+	const navigate = useNavigate();
+
+	const handleSubmit = async (values) => {
+		const contactList = { ...values };
+		await addNewContacts(contactList);
+		navigate("/facilities");
+	};
 	return (
 		<div className="container py-4">
 			<div className="row">
@@ -64,7 +79,7 @@ function ContactUser() {
 				{/* Form liên hệ bên phải */}
 				<div className="col-md-7">
 					<p className="form-title">Vui lòng liên hệ với chúng tôi nếu bạn cần thêm thông tin</p>
-					<Formik validationSchema={validationSchema}>
+					<Formik validationSchema={validationSchema} initialValues={contactList} onSubmit={handleSubmit}>
 						<Form className="contact-form">
 							<div className="row">
 								<div className="col-md-6 mb-3">
@@ -78,12 +93,12 @@ function ContactUser() {
 							</div>
 
 							<div className="mb-3">
-								<Field type="text" name="phone" className="form-control" placeholder="Số điện thoại *" />
+								<Field type="number" name="phone" className="form-control" placeholder="Số điện thoại *" />
 								<ErrorMessage name="phone" component="div" className="error-text mt-2" style={{ color: "red" }} />
 							</div>
 
 							<div className="mb-3">
-								<Field as="textarea" name="message" className="form-control" placeholder="Nội dung" rows="3" />
+								<Field as="textarea" name="content" className="form-control" placeholder="Nội dung" rows="3" />
 							</div>
 
 							<button type="submit" className="btn btn-custom-outline w-25" d>

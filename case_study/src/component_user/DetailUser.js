@@ -124,9 +124,9 @@ function DetailUser() {
 								Dịch Vụ Phòng
 							</li>
 						</ul>
-						<Button variant="light" className="w-100">
+						<Link variant="light" className=" btn w-100 btn-custom" to={"/booking"}>
 							ĐẶT PHÒNG
-						</Button>
+						</Link>
 						<p className="text-center mt-2">Best Choice - Low Price Guarantee</p>
 					</Card>
 				</Col>

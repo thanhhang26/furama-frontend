@@ -131,7 +131,7 @@ function FacilitiesList() {
 							facilitiesList.map((f) => (
 								<Col key={f.id}>
 									<Card className="h-100 d-flex flex-column shadow">
-										<Card.Img variant="top" src={f.image} alt={f.imgAlt} />
+										<Card.Img variant="top" src={f.image} alt={f.imgAlt} style={{ height: "250px", objectFit: "cover" }} />
 										<Card.Body className="d-flex flex-column">
 											<Card.Title>{f.title}</Card.Title>
 											<Card.Text>

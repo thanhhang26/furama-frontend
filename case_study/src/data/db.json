@@ -7,17 +7,17 @@
       "title": "PHÒNG PRESIDENTIAL SUITE",
       "size": "130",
       "information": {
-        "bedroom": "1 ",
-        "bed": "1 ",
-        "bathroom": "1 ",
-        "kitchen": "1 ",
-        "customer": "2 ",
+        "bedroom": "2",
+        "bed": "2",
+        "bathroom": "1",
+        "kitchen": "1",
+        "customer": "1 - 6",
         "price": "6.000.000"
       },
       "features": [
         "Thang Máy Riêng",
         "Truy Cập Internet Miễn Phí",
-        "Toàn Cảnh Hướng Biển"
+        "Hướng Biển"
       ],
       "typeId": 3
     },
@@ -32,7 +32,7 @@
         "bed": "1",
         "bathroom": "1",
         "kitchen": "1",
-        "customer": "2 ",
+        "customer": "1 - 6 ",
         "price": "6.000.000"
       },
       "features": [
@@ -73,7 +73,7 @@
         "bed": "4 ",
         "bathroom": "3",
         "kitchen": "1",
-        "customer": "6",
+        "customer": "6 - 8",
         "price": "10.000.000"
       },
       "features": [
@@ -93,7 +93,7 @@
         "bed": "1",
         "bathroom": "1",
         "kitchen": "1",
-        "customer": "2",
+        "customer": "10 - 15",
         "price": "20.000.000"
       },
       "features": [
@@ -114,7 +114,7 @@
         "bed": "6",
         "bathroom": "3",
         "kitchen": "1",
-        "customer": "5",
+        "customer": "1 - 6",
         "price": "9.000.000"
       },
       "features": [
@@ -134,7 +134,7 @@
         "bed": "6 ",
         "bathroom": "3 ",
         "kitchen": "1 ",
-        "customer": "12 ",
+        "customer": "2 - 6",
         "price": "6.000.000 "
       },
       "features": [
@@ -154,7 +154,7 @@
         "bed": "2",
         "bathroom": "2",
         "kitchen": "1",
-        "customer": "4",
+        "customer": "1 - 4",
         "price": "6.000.000 "
       },
       "features": [
@@ -175,7 +175,7 @@
         "bed": "6 ",
         "bathroom": "3 ",
         "kitchen": "1 ",
-        "customer": "12 ",
+        "customer": "2 - 8",
         "price": "6.000.000 "
       },
       "features": [
@@ -193,12 +193,12 @@
         "bed": "0",
         "bathroom": "1",
         "kitchen": "0",
-        "customer": "0",
-        "price": "10000"
+        "customer": "1 - 2",
+        "price": "1.000.000"
       },
       "features": [],
       "image": "https://res.cloudinary.com/dtcpg30ca/image/upload/v1741272144/bai_2_dung_dich_nuoc_n9hwxq.jpg",
-      "type": "resort"
+      "typeId": 3
     },
     {
       "id": 11,
@@ -209,15 +209,15 @@
         "bed": "1",
         "bathroom": "1",
         "kitchen": "1",
-        "customer": "1",
-        "price": "1000"
+        "customer": "1 - 2",
+        "price": "1.000.000"
       },
       "features": [
         "Thang máy",
         "View hướng biển"
       ],
       "image": "https://res.cloudinary.com/dtcpg30ca/image/upload/v1741273071/bai_2_dung_dich_nuoc_ylles4.jpg",
-      "type": "resort"
+      "typeId": 3
     },
     {
       "id": 16,
@@ -228,14 +228,14 @@
         "bed": "1 ",
         "bathroom": "1",
         "kitchen": "1",
-        "customer": "3",
-        "price": "3000000"
+        "customer": "1 - 4",
+        "price": "3.000.000"
       },
       "features": [
         "Thang máy"
       ],
       "image": "https://res.cloudinary.com/dtcpg30ca/image/upload/v1741291213/bai_3_on_tap_pib7lt.jpg",
-      "type": "villa"
+      "typeId": 3
     }
   ],
   "types": [
@@ -267,13 +267,20 @@
       "password": "hang123",
       "email": "thanhhang@gmail.com",
       "avatar": "/image/avatar.jpg",
-      "role": "USER"
+      "role": "ADMIN"
     },
     {
-      "email": "eirian@livinitlarge.net",
+      "email": "dinhhang440@gmail.com",
+      "userName": "thanhhang",
+      "password": "1234",
+      "id": 3
+    },
+    {
+      "email": "thanhhang262003@gmail.com",
       "userName": "hangdinh",
       "password": "12345",
-      "id": 3
+      "role": "ADMIN",
+      "id": 4
     }
   ],
   "contact": [
@@ -302,6 +309,102 @@
       "imgSrc": "https://furamavietnam.com/wp-content/uploads/2023/09/1.jpg",
       "imgAlt": "Image 3",
       "text": "Ẩn mình trong một góc nhỏ của khu nghỉ dưỡng, V-Senses Wellness & Spa đưa du khách đến một thiên đường thanh bình của sự thư giãn và trẻ hóa hoàn toàn. Hãy tận hưởng thời gian thư thái với những liệu trình trị liệu vô cùng đặc biệt tại V-senses Wellness & Spa."
+    }
+  ],
+  "contactList": [
+    {
+      "id": 1,
+      "name": "Nguyễn Văn A",
+      "email": "nguyenvana@gmail.com",
+      "phone": "0912456771",
+      "content": "Đây là 1 ví dụ"
+    },
+    {
+      "id": 2,
+      "name": "Nguyễn Văn B",
+      "email": "nguyenvanb@gmail.com",
+      "phone": "0912456771",
+      "content": "Đây là 1 ví dụ"
+    },
+    {
+      "id": 3,
+      "name": "Nguyễn Văn C",
+      "email": "nguyenvanc@gmail.com",
+      "phone": "0912456771",
+      "content": "Đây là 1 ví dụ"
+    },
+    {
+      "id": 4,
+      "name": "Nguyễn Văn D",
+      "email": "nguyenvand@gmail.com",
+      "phone": "0912456771",
+      "content": "Đây là 1 ví dụ"
+    },
+    {
+      "id": 5,
+      "name": "Nguyễn Văn E",
+      "email": "nguyenvane@gmail.com",
+      "phone": "0912456771",
+      "content": "Đây là 1 ví dụ"
+    }
+  ],
+  "booking": [
+    {
+      "id": 1,
+      "customer": {
+        "firstName": "Văn A",
+        "lastName": "Nguyễn",
+        "phone": "0923456789",
+        "email": "vana@gmail.com"
+      },
+      "facilityId": 1,
+      "guests": 6,
+      "startDate": "2025-05-01",
+      "endDate": "2025-05-04",
+      "totalPrice": "24.000.000"
+    },
+    {
+      "id": 2,
+      "customer": {
+        "firstName": "Văn B",
+        "lastName": "Nguyễn",
+        "phone": "0923456789",
+        "email": "vanb@gmail.com"
+      },
+      "facilityId": 2,
+      "guests": 6,
+      "startDate": "2025-05-01",
+      "endDate": "2025-05-04",
+      "totalPrice": "24.000.000"
+    },
+    {
+      "id": 3,
+      "customer": {
+        "firstName": "Văn C",
+        "lastName": "Nguyễn",
+        "phone": "0923456789",
+        "email": "vanc@gmail.com"
+      },
+      "facilityId": 3,
+      "guests": 6,
+      "startDate": "2025-05-01",
+      "endDate": "2025-05-04",
+      "totalPrice": "24.000.000"
+    },
+    {
+      "id": 4,
+      "customer": {
+        "firstName": "Thị A",
+        "lastName": "Nguyễn",
+        "phone": 9234657791,
+        "email": "nguyenthia@gmail.com"
+      },
+      "startDate": "2025-05-01",
+      "endDate": "2025-05-05",
+      "guests": 3,
+      "totalPrice": "30.000.000",
+      "price": "6.000.000",
+      "facilityId": 1
     }
   ]
 }
