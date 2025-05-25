@@ -1,28 +1,34 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
 import { HiArrowPath } from "react-icons/hi2";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Pagination } from "react-bootstrap";
-import { getAllContactList, search } from "../service/contactService";
 import { PAGE_SIZE } from "../service/constant";
-import DeleteContactUser from "../component_user/DeleteContactUser";
+import { getAllBookingList, searchBooking } from "../service/bookingAdminService";
+import DeleteBookingUser from "./DeleteBookingUser";
+import { getAllFacilities } from "../service/facilitiesService";
 
 function BookingAdmin() {
-	const [contactList, setContactList] = useState([]);
+	const [bookingList, setBookingList] = useState([]);
 	const [totalSize, setTotalSize] = useState(PAGE_SIZE);
 	const [page, setPage] = useState(1);
 	const [totalPage, setTotalPage] = useState(0);
 	const [show, setShow] = useState(false);
-	const [deleteContacts, setDeleteContacts] = useState([]);
+	const [deleteBookings, setDeleteBookings] = useState([]);
 	const [reload, setReload] = useState(true);
+	const { id } = useParams();
+	const [facilities, setFacilities] = useState([]);
 
 	useEffect(() => {
 		window.scrollTo(0, 0); // Trượt lên đầu trang khi component được render
 		const fetchData = async () => {
-			const [data, totalRecords] = await getAllContactList(page, totalSize);
-			setContactList(data);
+			const [data, totalRecords] = await getAllBookingList(page, totalSize);
+			const rawFacility = await getAllFacilities();
+			const facilitiesData = rawFacility.flat();
+			setBookingList(data);
+			setFacilities(facilitiesData);
 			setTotalPage(Math.ceil(totalRecords / PAGE_SIZE));
 		};
 		fetchData();
@@ -30,13 +36,15 @@ function BookingAdmin() {
 
 	const searchNameRef = useRef();
 	const searchPhoneRef = useRef();
+	const searchRoomRef = useRef();
 	const handleSearchName = async () => {
-		let nameContact = searchNameRef.current.value.trim();
-		let phoneContact = searchPhoneRef.current.value.trim();
+		let nameBooking = searchNameRef.current.value.trim().toLowerCase();
+		let phoneBooking = searchPhoneRef.current.value.trim();
+		let roomBooking = searchRoomRef.current.value.trim().toLowerCase();
 
-		const [data, totalRecords] = await search(nameContact, phoneContact, page, PAGE_SIZE);
+		const [data, totalRecords] = await searchBooking(nameBooking, phoneBooking, roomBooking, page, PAGE_SIZE);
 		setTotalPage(Math.ceil(totalRecords / PAGE_SIZE));
-		setContactList(data);
+		setBookingList(data);
 	};
 
 	const handleFirst = () => {
@@ -53,7 +61,7 @@ function BookingAdmin() {
 	};
 
 	const showModalDelete = (contact) => {
-		setDeleteContacts(contact);
+		setDeleteBookings(contact);
 		setShow(true);
 	};
 
@@ -101,6 +109,12 @@ function BookingAdmin() {
 					</Col>
 
 					<Col xs="auto">
+						<div className="d-flex align-items-center">
+							<input type="text" id="customerPhone" className="form-control" style={{ width: "250px" }} placeholder="Tên phòng" ref={searchRoomRef} />
+						</div>
+					</Col>
+
+					<Col xs="auto">
 						<div className="d-flex">
 							<button
 								type="button"
@@ -134,34 +148,38 @@ function BookingAdmin() {
 								Họ Tên
 							</th>
 							<th className="text-center" style={{ width: "250px" }}>
-								Email
-							</th>
-							<th className="text-center" style={{ width: "250px" }}>
 								Số điện thoại
 							</th>
 							<th className="text-center" style={{ width: "250px" }}>
-								Nội dung
+								Loại phòng
 							</th>
-							<th className="text-center" style={{ width: "250px" }}></th>
+							<th colSpan={2} className="text-center" style={{ width: "250px" }}>
+								Thông tin đặt phòng
+							</th>
 						</tr>
 					</thead>
 					<tbody>
-						{contactList.length === 0 ? (
+						{bookingList.length === 0 ? (
 							<tr>
 								<td colSpan="6" className="text-center">
 									Không có dữ liệu
 								</td>
 							</tr>
 						) : (
-							contactList.map((c, i) => (
-								<tr key={c.id}>
-									<td className="text-center">{(page - 1) * PAGE_SIZE + i + 1}</td>
-									<td>{c.name}</td>
-									<td>{c.email}</td>
-									<td>{c.phone}</td>
-									<td>{c.content}</td>
-									<td className="text-center">
-										<button onClick={() => showModalDelete(c)} className="btn btn-danger">
+							bookingList.map((b, i) => (
+								<tr key={b.id}>
+									<td className="text-center align-middle">{(page - 1) * PAGE_SIZE + i + 1}</td>
+									<td className="align-middle">{`${b.customer.lastName} ${b.customer.firstName}`}</td>
+									<td className="align-middle">{b.customer.phone}</td>
+									<td className="align-middle">{facilities.find((f) => String(f.id) === String(b.facilityId))?.title || "Không rõ"}</td>
+									<td className="text-center align-middle">
+										<Link className="btn btn-primary me-3" to={`/detailBooking/${b.id}`}>
+											Chi tiết
+										</Link>
+										<Link className="btn btn-warning me-3" to={`/editBooking/${b.id}`}>
+											Sửa
+										</Link>
+										<button onClick={() => showModalDelete(b)} className="btn btn-danger">
 											Xoá
 										</button>
 									</td>
@@ -172,7 +190,7 @@ function BookingAdmin() {
 				</table>
 			</div>
 			<div>
-				<DeleteContactUser contact={deleteContacts} show={show} closeModal={closeModal} />
+				<DeleteBookingUser booking={deleteBookings} show={show} closeModal={closeModal} />
 			</div>
 			<Pagination className="container my-4 d-flex justify-content-center" id="pagination">
 				<Pagination.First onClick={handleFirst} disabled={page === 1}>

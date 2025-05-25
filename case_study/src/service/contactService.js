@@ -21,7 +21,7 @@ export async function search(nameContact, phoneContact, page, limit) {
 		} else if (nameContact) {
 			response = await axios.get(`${BASE_URL}/contactList?name_like=${nameContact}&_page=${page}&_limit=${limit}`);
 		} else {
-			response = await axios.get(`${BASE_URL}/contactList`);
+			response = await axios.get(`${BASE_URL}/contactList?_page=${page}&_limit=${limit}`);
 		}
 		const totalRecords = response.headers["x-total-count"];
 		return [response.data, totalRecords];

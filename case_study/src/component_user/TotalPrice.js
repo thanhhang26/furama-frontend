@@ -2,43 +2,49 @@ import { useEffect } from "react";
 import { useFormikContext } from "formik";
 
 function TotalPrice() {
-	const { values, setFieldValue } = useFormikContext();
-	const { startDate, endDate, price } = values;
+	const formik = useFormikContext();
 
 	useEffect(() => {
-		if (startDate && endDate && price) {
-			const start = new Date(startDate);
-			const end = new Date(endDate);
+		// Tránh lỗi nếu formik chưa có giá trị
+		if (!formik || !formik.values) return;
 
-			if (isNaN(start.getTime()) || isNaN(end.getTime())) {
-				setFieldValue("totalPrice", "");
-				return;
-				//Tạo đối tượng Date từ 2 ngày.
-				// Nếu 1 trong 2 ngày không hợp lệ (kết quả NaN), đặt totalPrice về rỗng và dừng tính toán.
-			}
+		const { startDate, endDate, price, totalPrice } = formik.values;
 
-			const diffTime = end.getTime() - start.getTime();
-			const days = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1;
+		if (!startDate || !endDate || !price) {
+			if (totalPrice !== "") formik.setFieldValue("totalPrice", "");
+			return;
+		}
 
-			const cleanedPrice = String(price).replace(/\./g, "");
-			const parsedPrice = parseFloat(cleanedPrice);
-			//Giá price có thể có dấu chấm (.) phân cách hàng nghìn, ví dụ "1.200.000".
-			// Loại bỏ tất cả dấu chấm để chuyển thành chuỗi số thuần, ví dụ "1200000".
-			// Chuyển chuỗi sang số thực (float).
-			if (days > 0 && !isNaN(parsedPrice)) {
-				//Tính tổng tiền = số ngày * giá tiền.
-				const total = days * parsedPrice;
+		const start = new Date(startDate);
+		const end = new Date(endDate);
 
-				// Format: 24.000.000
-				const formattedTotal = new Intl.NumberFormat("vi-VN").format(total);
-				setFieldValue("totalPrice", formattedTotal);
-			} else {
-				setFieldValue("totalPrice", "");
+		if (isNaN(start.getTime()) || isNaN(end.getTime())) {
+			if (totalPrice !== "") formik.setFieldValue("totalPrice", "");
+			return;
+			//Tạo đối tượng Date từ 2 ngày.
+			// Nếu 1 trong 2 ngày không hợp lệ (kết quả NaN), đặt totalPrice về rỗng và dừng tính toán.
+		}
+
+		const diffTime = end.getTime() - start.getTime();
+		const days = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1;
+
+		const cleanedPrice = String(price).replace(/\./g, "");
+		const parsedPrice = parseFloat(cleanedPrice);
+		//Giá price có thể có dấu chấm (.) phân cách hàng nghìn, ví dụ "1.200.000".
+		// Loại bỏ tất cả dấu chấm để chuyển thành chuỗi số thuần, ví dụ "1200000".
+		// Chuyển chuỗi sang số thực (float).
+
+		if (days > 0 && !isNaN(parsedPrice)) {
+			const total = days * parsedPrice;
+			const formattedTotal = new Intl.NumberFormat("vi-VN").format(total);
+
+			if (formattedTotal !== totalPrice) {
+				formik.setFieldValue("totalPrice", formattedTotal);
 			}
 		} else {
-			setFieldValue("totalPrice", "");
+			if (totalPrice !== "") formik.setFieldValue("totalPrice", "");
 		}
-	}, [startDate, endDate, price, setFieldValue]);
+	}, [formik]);
 
 	return null;
 }

@@ -26,13 +26,13 @@
       "image": "https://furamavietnam.com/wp-content/uploads/2018/03/Furama-Resort-Danang-Ocean-Suite-4-768x497.jpg",
       "imgAlt": "Image 2",
       "title": "PHÒNG STUDIO SUITE HƯỚNG BIỂN",
-      "size": "85.2",
+      "size": "85.4",
       "information": {
-        "bedroom": "1 ",
+        "bedroom": "1",
         "bed": "1",
         "bathroom": "1",
         "kitchen": "1",
-        "customer": "1 - 6 ",
+        "customer": "1 - 6",
         "price": "6.000.000"
       },
       "features": [
@@ -359,9 +359,10 @@
       },
       "facilityId": 1,
       "guests": 6,
-      "startDate": "2025-05-01",
-      "endDate": "2025-05-04",
-      "totalPrice": "24.000.000"
+      "startDate": "2025-05-12",
+      "endDate": "2025-05-16",
+      "totalPrice": "30.000.000",
+      "price": "6.000.000"
     },
     {
       "id": 2,
@@ -374,8 +375,9 @@
       "facilityId": 2,
       "guests": 6,
       "startDate": "2025-05-01",
-      "endDate": "2025-05-04",
-      "totalPrice": "24.000.000"
+      "endDate": "2025-05-08",
+      "totalPrice": "48.000.000",
+      "price": "6.000.000"
     },
     {
       "id": 3,
@@ -389,22 +391,8 @@
       "guests": 6,
       "startDate": "2025-05-01",
       "endDate": "2025-05-04",
-      "totalPrice": "24.000.000"
-    },
-    {
-      "id": 4,
-      "customer": {
-        "firstName": "Thị A",
-        "lastName": "Nguyễn",
-        "phone": 9234657791,
-        "email": "nguyenthia@gmail.com"
-      },
-      "startDate": "2025-05-01",
-      "endDate": "2025-05-05",
-      "guests": 3,
-      "totalPrice": "30.000.000",
-      "price": "6.000.000",
-      "facilityId": 1
+      "totalPrice": "60.000.000",
+      "price": "15.000.000"
     }
   ]
 }

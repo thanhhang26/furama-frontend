@@ -7,7 +7,7 @@ import Col from "react-bootstrap/Col";
 import { Pagination } from "react-bootstrap";
 import { getAllContactList, search } from "../service/contactService";
 import { PAGE_SIZE } from "../service/constant";
-import DeleteContactUser from "../component_user/DeleteContactUser";
+import DeleteContactUser from "./DeleteContactUser";
 
 function ContactAdmin() {
 	const [contactList, setContactList] = useState([]);
@@ -71,7 +71,7 @@ function ContactAdmin() {
 		<div>
 			<div className="container my-3">
 				<div className="text-center mb-5">
-					<h2>DANH SÁCH KHÁCH HÀNG</h2>
+					<h2>DANH SÁCH LIÊN HỆ</h2>
 				</div>
 				<Row className="g-4 align-items-center">
 					<Col xs="auto">
@@ -155,12 +155,12 @@ function ContactAdmin() {
 						) : (
 							contactList.map((c, i) => (
 								<tr key={c.id}>
-									<td className="text-center">{(page - 1) * PAGE_SIZE + i + 1}</td>
-									<td>{c.name}</td>
-									<td>{c.email}</td>
-									<td>{c.phone}</td>
-									<td>{c.content}</td>
-									<td className="text-center">
+									<td className="text-center align-middle">{(page - 1) * PAGE_SIZE + i + 1}</td>
+									<td className="align-middle">{c.name}</td>
+									<td className="align-middle">{c.email}</td>
+									<td className="align-middle">{c.phone}</td>
+									<td className="align-middle">{c.content}</td>
+									<td className="text-center align-middle">
 										<button onClick={() => showModalDelete(c)} className="btn btn-danger">
 											Xoá
 										</button>

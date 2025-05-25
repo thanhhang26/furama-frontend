@@ -5,6 +5,7 @@ import * as Yup from "yup";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import { getTypeById } from "../service/typesService";
 import { Form as BootstrapForm, Button, Col, Row } from "react-bootstrap";
+import { Bounce, toast } from "react-toastify";
 
 function EditComponent() {
 	const [facilities, setFacilities] = useState(null);
@@ -22,6 +23,17 @@ function EditComponent() {
 
 	const handleSubmit = async (value) => {
 		await updateFacilities(value.id, value);
+		toast.success("Chỉnh sửa thành công!", {
+			position: "top-right",
+			autoClose: 5000,
+			hideProgressBar: false,
+			closeOnClick: false,
+			pauseOnHover: true,
+			draggable: true,
+			progress: undefined,
+			theme: "colored",
+			transition: Bounce,
+		});
 		navigate(`/facilities/`);
 	};
 
@@ -30,8 +42,8 @@ function EditComponent() {
 			.trim()
 			.required("Không được để trống")
 			.matches(/^[\p{L}\d\s]+$/u, "Tên không hợp lệ"), //\p{L}: Bất kỳ chữ cái Unicode nào (bao gồm cả tiếng Việt có dấu), \d: Bất kỳ chữ số nào (0–9)
+		size: Yup.number().typeError("Diện tích phải là số").required("Không được để trống"),
 		information: Yup.object({
-			size: Yup.number().typeError("Diện tích phải là số").required("Không được để trống"),
 			bedroom: Yup.number()
 				.typeError("Số phòng ngủ phải là số")
 				.min(0, "Số phòng ngủ không hợp lệ")
@@ -52,10 +64,10 @@ function EditComponent() {
 				.min(0, "Số phòng bếp không hợp lệ")
 				.max(99, "Số phòng bếp không hợp lệ")
 				.required("Không được để trống"),
-			customer: Yup.number()
-				.typeError("Số phòng ngủ phải là số")
-				.min(0, "Số phòng ngủ không hợp lệ")
-				.max(99, "Số phòng ngủ không hợp lệ")
+			customer: Yup.string()
+				.typeError("Số khách hàng phải là số")
+				.min(1, "Số khách hàng phải từ 1 - 99")
+				.max(99, "Số khách hàng phải từ 1 - 99")
 				.required("Không được để trống"),
 			price: Yup.string()
 				.trim() // loại bỏ khoảng trắng đầu/cuối

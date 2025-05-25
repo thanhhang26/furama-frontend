@@ -36,10 +36,10 @@ function DeleteContactUser({ show, closeModal, contact }) {
 				</Modal.Body>
 				<Modal.Footer>
 					<Button variant="secondary" onClick={handleClose}>
-						Close
+						Đóng
 					</Button>
 					<Button variant="primary" onClick={handleDelete}>
-						Delete
+						Xoá
 					</Button>
 				</Modal.Footer>
 			</Modal>

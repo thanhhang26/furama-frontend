@@ -18,6 +18,8 @@ import Register from "./login-logout/Register";
 import BookingUser from "./component_user/BookingUser";
 import ContactAdmin from "./component_admin/ContactAdmin";
 import BookingAdmin from "./component_admin/BookingAdmin";
+import EditBooking from "./component_admin/EditBooking";
+import DetailBooking from "./component_admin/DetailBooking";
 function App() {
 	<div className="flex justify-center items-center min-h-screen bg-gray-100 p-4">
 		<BookingUser />
@@ -34,6 +36,9 @@ function App() {
 					<Route path={"/facilities/detail/:id"} element={account?.role === "ADMIN" ? <DetailComponent /> : <DetailUser />} />
 					<Route path={"/add_new"} element={account?.role === "ADMIN" ? <AddComponent /> : <Navigate to="/" />} />
 					<Route path={"/edit/:id"} element={account?.role === "ADMIN" ? <EditComponent /> : <Navigate to="/" />} />
+					<Route path={"/bookingAdmin"} element={<BookingAdmin />}></Route>
+					<Route path={"/editBooking/:id"} element={<EditBooking />}></Route>
+					<Route path={"/detailBooking/:id"} element={<DetailBooking />}></Route>
 					<Route path={"/contact"} element={<ContactUser />}></Route>
 					<Route path={"/booking"} element={<BookingUser />}></Route>
 					<Route path={"/contactAdmin"} element={<ContactAdmin />}></Route>

@@ -1,17 +1,17 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import { deleteFacilitiesById } from "../service/facilitiesService";
+import { deleteBookingById } from "../service/bookingAdminService";
 
-function DeleteComponent({ show, closeModal, facilities }) {
+function DeleteBookingUser({ show, closeModal, booking }) {
 	const handleClose = async () => {
 		await closeModal();
 	};
 
 	const handleDelete = async () => {
 		try {
-			if (facilities?.id) {
-				await deleteFacilitiesById(facilities.id);
+			if (booking?.id) {
+				await deleteBookingById(booking.id);
 				handleClose();
 			} else {
 				console.error("No ID provided");
@@ -25,12 +25,12 @@ function DeleteComponent({ show, closeModal, facilities }) {
 		<>
 			<Modal show={show} onHide={handleClose}>
 				<Modal.Header closeButton>
-					<Modal.Title>Xoá dịch vụ</Modal.Title>
+					<Modal.Title>Xoá đơn đặt phòng</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
-					Bạn có muốn xoá dịch vụ{" "}
+					Bạn có muốn xoá khách hàng{" "}
 					<strong>
-						{facilities?.id} - {facilities?.title}
+						{booking?.id} - {`${booking?.customer?.lastName || ""} ${booking?.customer?.firstName || ""}`.trim() || "Không có tên khách hàng"}
 					</strong>
 					?
 				</Modal.Body>
@@ -47,4 +47,4 @@ function DeleteComponent({ show, closeModal, facilities }) {
 	);
 }
 
-export default DeleteComponent;
+export default DeleteBookingUser;

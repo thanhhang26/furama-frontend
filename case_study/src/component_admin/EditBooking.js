@@ -4,73 +4,38 @@ import * as Yup from "yup";
 import { Button, Row, Col } from "react-bootstrap";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { getAllFacilities } from "../service/facilitiesService";
-import { addBooking, getAllBooking } from "../service/bookingUserService";
+import { getAllBooking } from "../service/bookingUserService";
 import { Bounce, toast } from "react-toastify";
-import TotalPrice from "./TotalPrice";
+import TotalPrice from "../component_user/TotalPrice";
+import { updateBooking } from "../service/bookingAdminService";
 
-function BookingUser() {
-	const [booking, setBooking] = useState({
-		id: "",
-		customer: {
-			firstName: "",
-			lastName: "",
-			phone: "",
-			email: "",
-		},
-		startDate: "",
-		endDate: "",
-		guests: "",
-		totalPrice: "",
-		price: "",
-		facilityId: "",
-	});
+function EditBooking() {
+	const [booking, setBooking] = useState(null);
+	const { id } = useParams();
+	const navigate = useNavigate();
 
 	const [selectedFacility, setSelectedFacility] = useState(null);
-	const { id } = useParams();
 	useEffect(() => {
 		window.scrollTo(0, 0); // Trượt lên đầu trang khi component được render
 		const fetchData = async () => {
 			const bookingData = await getAllBooking();
 			const rawFacilities = await getAllFacilities();
 			const facilitiesData = rawFacilities.flat();
-			//Hàm .flat() giúp biến mảng lồng nhau thành một mảng phẳng. Nó sẽ biến mảng lồng nhau như [ [ {...}, {...} ], [ {...} ] ] → thành [ {...}, {...}, {...} ].(không bị undefined)
 
-			if (bookingData.length > 0) {
-				const selectedBooking = bookingData[0];
-				// console.log("selectedBooking:", selectedBooking);
-				// console.log("Selected booking facilityId:", selectedBooking.facilityId);
-
-				// facilitiesData.forEach((facility, index) => {
-				// 	console.log(`Facility ${index}:`, facility);
-				// 	console.log(`  id:`, facility.id);
-				// 	console.log(`  information:`, facility.information);
-				// 	console.log(`  price:`, facility.information?.price);
-				// });
-
+			const selectedBooking = bookingData.find((item) => String(item.id) === String(id));
+			if (selectedBooking) {
 				const matchedFacility = facilitiesData.find(
 					(facility) => String(facility?.id ?? facility?.facility?.id) === String(selectedBooking?.facilityId)
 				);
-				console.log("matchedFacility:", matchedFacility);
+				const priceFromFacility = matchedFacility?.information?.price ?? matchedFacility?.facility?.information?.price;
 
-				if (matchedFacility) {
-					const priceFromFacility = matchedFacility?.information?.price ?? matchedFacility?.facility?.information?.price;
-					console.log("priceFromFacility:", priceFromFacility);
-
-					setSelectedFacility(matchedFacility);
-					if (selectedBooking) {
-						setBooking({
-							...booking,
-							price: priceFromFacility || "",
-							facilityId: selectedBooking.facilityId || "",
-						});
-					} else {
-						setBooking(booking);
-						setSelectedFacility(null);
-					}
-				}
+				setSelectedFacility(matchedFacility);
+				setBooking({
+					...selectedBooking,
+					price: priceFromFacility || "",
+				});
 			}
 		};
-
 		fetchData();
 	}, [id]);
 
@@ -90,14 +55,9 @@ function BookingUser() {
 		endDate: Yup.date().min(Yup.ref("startDate"), "Ngày đi phải sau hoặc bằng ngày đến").required("Vui lòng chọn ngày đi"),
 	});
 
-	const navigate = useNavigate();
 	const handleSubmit = async (value) => {
-		const booking = {
-			...value,
-		};
-
-		await addBooking(booking);
-		toast.success("Đặt phòng thành công!", {
+		await updateBooking(value.id, value);
+		toast.success("Chỉnh sửa thành công!", {
 			position: "top-right",
 			autoClose: 5000,
 			hideProgressBar: false,
@@ -108,17 +68,18 @@ function BookingUser() {
 			theme: "colored",
 			transition: Bounce,
 		});
-		navigate("/facilities");
+		navigate("/bookingAdmin");
 	};
 
 	return (
 		<>
 			<div className="container mt-4">
+				<h3 className="text-center">CHỈNH SỬA THÔNG TIN ĐẶT PHÒNG</h3>
 				<Formik enableReinitialize={true} initialValues={booking} onSubmit={handleSubmit} validationSchema={validationSchema}>
-					<Form className="card p-4 mb-4">
+					<Form className=" p-4 mb-4">
 						<TotalPrice />
 						<div>
-							<h3 className="mb-3">Thông tin chi tiết của bạn</h3>
+							<h4 className="mb-3">Thông tin chi tiết của bạn</h4>
 							<Row className="g-5">
 								<Col md={6}>
 									<div className="mb-3 ">
@@ -150,7 +111,7 @@ function BookingUser() {
 						</div>
 
 						<div>
-							<h3 className="mb-3">Thông tin đặt phòng</h3>
+							<h4 className="mb-3">Thông tin đặt phòng</h4>
 							<Row className="g-5">
 								<Col md={6}>
 									<div className="mb-3">
@@ -161,18 +122,14 @@ function BookingUser() {
 
 									<div className="mb-3">
 										<label className="form-label fw-semibold">Giá tiền 1 ngày (VNĐ)</label>
-										<Field name="price">
-											{({ field }) => <input {...field} type="text" className="form-control" readOnly value={field.value || ""} />}
-										</Field>
+										<Field type="text" name="price" className="form-control" readOnly />
 										<ErrorMessage name="price" component="div" className="text-danger" />
 									</div>
 
-									<div className="row align-items-center g-1 mt-4">
-										<label className="form-label fw-semibold col-sm-2 p-0">Tổng tiền (VNĐ)</label>
-										<div className="col-sm-10 p-0">
-											<Field type="text" name="totalPrice" className="form-control" readOnly />
-											<ErrorMessage name="totalPrice" component="div" className="text-danger" />
-										</div>
+									<div className="mb-3">
+										<label className="form-label fw-semibold">Tổng tiền (VNĐ)</label>
+										<Field type="text" name="totalPrice" className="form-control" readOnly />
+										<ErrorMessage name="totalPrice" component="div" className="text-danger" />
 									</div>
 								</Col>
 
@@ -188,15 +145,21 @@ function BookingUser() {
 										<Field type="number" name="guests" className="form-control" placeholder="Nhập số lượng khách" />
 										<ErrorMessage name="guests" component="div" className="text-danger" />
 									</div>
+
+									<div className="mb-3">
+										<label className="form-label fw-semibold">Loại phòng</label>
+										<Field type="text" name="facilityTitle" className="form-control" placeholder="Tên loại phòng" />
+										<ErrorMessage name="facilityTitle" component="div" className="text-danger" />
+									</div>
 								</Col>
 							</Row>
 						</div>
 						{/* Nút Submit */}
 						<div className="text-center mt-4">
-							<Button type="submit" className="btn btn-custom-outline w-25 px-4">
-								Đặt phòng
+							<Button type="submit" className="btn btn-custom-outline px-4">
+								Lưu
 							</Button>
-							<Link type="button" className="btn btn-outline-secondary ms-3 w-25 px-4" to={`/facilities`}>
+							<Link type="button" className="btn btn-outline-secondary ms-3 px-4" to={`/bookingAdmin`}>
 								Trở về
 							</Link>
 						</div>
@@ -207,4 +170,4 @@ function BookingUser() {
 	);
 }
 
-export default BookingUser;
+export default EditBooking;
