@@ -21,38 +21,41 @@ import BookingAdmin from "./component_admin/BookingAdmin";
 import EditBooking from "./component_admin/EditBooking";
 import DetailBooking from "./component_admin/DetailBooking";
 function App() {
-	<div className="flex justify-center items-center min-h-screen bg-gray-100 p-4">
-		<BookingUser />
-	</div>;
-	const account = useSelector((state) => state?.user?.account);
-	return (
-		<>
-			<Routes>
-				<Route element={<HomeLayout />}>
-					<Route path="/" element={<FuramaComponent />} />
-					<Route path={"/furama"} element={<FuramaComponent />}></Route>
-					<Route path={"/homepage"} element={<Homepage />}></Route>
-					<Route path={"/facilities"} element={account?.role === "ADMIN" ? <FacilitiesList /> : <FacilitiesUser />} />
-					<Route path={"/facilities/detail/:id"} element={account?.role === "ADMIN" ? <DetailComponent /> : <DetailUser />} />
-					<Route path={"/add_new"} element={account?.role === "ADMIN" ? <AddComponent /> : <Navigate to="/" />} />
-					<Route path={"/edit/:id"} element={account?.role === "ADMIN" ? <EditComponent /> : <Navigate to="/" />} />
-					<Route path={"/bookingAdmin"} element={<BookingAdmin />}></Route>
-					<Route path={"/editBooking/:id"} element={<EditBooking />}></Route>
-					<Route path={"/detailBooking/:id"} element={<DetailBooking />}></Route>
-					<Route path={"/contact"} element={<ContactUser />}></Route>
-					<Route path={"/booking"} element={<BookingUser />}></Route>
-					<Route path={"/contactAdmin"} element={<ContactAdmin />}></Route>
-					<Route path={"/contact"} element={<ContactUser />}></Route>
-					<Route path={"/facilitiesUser/detail/:id"} element={<DetailUser />}></Route>
-				</Route>
-				<Route element={<AuthLayout />}>
-					<Route path={"/login"} element={<LoginComponent />}></Route>
-					<Route path={"/register"} element={<Register />}></Route>
-				</Route>
-			</Routes>
-			<ToastContainer />
-		</>
-	);
+  <div className="flex justify-center items-center min-h-screen bg-gray-100 p-4">
+    <BookingUser />
+  </div>;
+  const account = useSelector((state) => state?.user?.account);
+  return (
+    <>
+      <Routes>
+        <Route element={<HomeLayout />}>
+          <Route path="/" element={<FuramaComponent />} />
+          <Route path={"/furama"} element={<FuramaComponent />}></Route>
+          <Route path={"/homepage"} element={<Homepage />}></Route>
+          <Route path={"/facilities"} element={account?.role === "ADMIN" ? <FacilitiesList /> : <FacilitiesUser />} />
+          <Route
+            path={"/facilities/detail/:id"}
+            element={account?.role === "ADMIN" ? <DetailComponent /> : <DetailUser />}
+          />
+          <Route path={"/add_new"} element={account?.role === "ADMIN" ? <AddComponent /> : <Navigate to="/" />} />
+          <Route path={"/edit/:id"} element={account?.role === "ADMIN" ? <EditComponent /> : <Navigate to="/" />} />
+          <Route path={"/bookingAdmin"} element={<BookingAdmin />}></Route>
+          <Route path={"/editBooking/:id"} element={<EditBooking />}></Route>
+          <Route path={"/detailBooking/:id"} element={<DetailBooking />}></Route>
+          <Route path={"/contact"} element={<ContactUser />}></Route>
+          <Route path={"/booking/:id"} element={<BookingUser />}></Route>
+          <Route path={"/contactAdmin"} element={<ContactAdmin />}></Route>
+          <Route path={"/contact"} element={<ContactUser />}></Route>
+          <Route path={"/facilitiesUser/detail/:id"} element={<DetailUser />}></Route>
+        </Route>
+        <Route element={<AuthLayout />}>
+          <Route path={"/login"} element={<LoginComponent />}></Route>
+          <Route path={"/register"} element={<Register />}></Route>
+        </Route>
+      </Routes>
+      <ToastContainer />
+    </>
+  );
 }
 
 export default App;
