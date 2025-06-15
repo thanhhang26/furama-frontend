@@ -16,8 +16,8 @@ function BookingUser() {
   const [booking, setBooking] = useState({
     id: "",
     customer: {
-      firstName: "",
-      lastName: "",
+      fullName: "",
+      capital: "",
       phone: "",
       email: "",
     },
@@ -50,7 +50,7 @@ function BookingUser() {
         setSelectedFacility(matchedFacility);
 
         setBooking({
-          id: "", // tạo booking mới, id rỗng
+          id: "",
           customer: {
             firstName: "",
             lastName: "",
@@ -63,6 +63,7 @@ function BookingUser() {
           totalPrice: "",
           price: priceFromFacility,
           facilityId: matchedFacility?.id ?? matchedFacility?.facility?.id ?? "",
+          note: "",
         });
       } else {
         setSelectedFacility(null);
@@ -80,6 +81,7 @@ function BookingUser() {
           totalPrice: "",
           price: "",
           facilityId: "",
+          note: "",
         });
       }
     };
@@ -89,23 +91,23 @@ function BookingUser() {
 
   const validationSchema = Yup.object({
     customer: Yup.object({
-      firstName: Yup.string().trim().required("Vui lòng nhập điền vào chỗ trống"), //.trim(): tránh lỗi khoảng trắng vô tình khi nhập
-      lastName: Yup.string().trim().required("Vui lòng nhập điền vào chỗ trống"),
+      fullName: Yup.string().trim().required("Trường này là bắt buộc"), //.trim(): tránh lỗi khoảng trắng vô tình khi nhập
+      capital: Yup.string().trim().required("Trường này là bắt buộc"),
       phone: Yup.string()
         .matches(/^[0-9]+$/, "Số điện thoại chỉ được chứa số")
         .min(10, "Số điện thoại phải có ít nhất 10 chữ số")
         .max(11, "Số điện thoại không được quá 11 chữ số")
-        .required("Vui lòng nhập số điện thoại"),
-      email: Yup.string().email("Email không hợp lệ").required("Vui lòng nhập điền vào chỗ trống"),
+        .required("Trường này là bắt buộc"),
+      email: Yup.string().email("Email không hợp lệ").required("Trường này là bắt buộc"),
     }),
     guests: Yup.number()
       .typeError("Số khách phải là số")
       .min(1, "Số khách phải ít nhất là 1")
-      .required("Vui lòng nhập số khách"),
-    startDate: Yup.date().required("Vui lòng chọn ngày đến"),
+      .required("Trường này là bắt buộc"),
+    startDate: Yup.date().required("Trường này là bắt buộc"),
     endDate: Yup.date()
       .min(Yup.ref("startDate"), "Ngày đi phải sau hoặc bằng ngày đến")
-      .required("Vui lòng chọn ngày đi"),
+      .required("Trường này là bắt buộc"),
   });
 
   const navigate = useNavigate();
@@ -136,7 +138,7 @@ function BookingUser() {
           <Row>
             <Col md={5}>
               <img
-                src={selectedFacility?.image || "https://via.placeholder.com/300x220"}
+                src={selectedFacility?.image}
                 alt={selectedFacility?.imgAlt || "Facility"}
                 className="img-fluid rounded"
                 style={{ objectFit: "cover", width: "100%", height: "220px" }}
@@ -190,12 +192,12 @@ function BookingUser() {
               <Row className="g-5">
                 <Col md={6}>
                   <div className="mb-3 ">
-                    <label className="form-label fw-semibold">Họ</label>
+                    <label className="form-label fw-semibold">Họ và tên</label>
                     <Field
                       type="text"
-                      name="customer.lastName"
+                      name="customer.fullName"
                       className="form-control"
-                      placeholder="Nhập họ của bạn"
+                      placeholder="Nhập họ tên của bạn"
                     />
                     <ErrorMessage name="customer.lastName" component="div" className="text-danger" />
                   </div>
@@ -208,12 +210,12 @@ function BookingUser() {
 
                 <Col md={6}>
                   <div className="mb-3">
-                    <label className="form-label fw-semibold">Tên</label>
+                    <label className="form-label fw-semibold">Thành phố</label>
                     <Field
                       type="text"
-                      name="customer.firstName"
+                      name="customer.capital"
                       className="form-control"
-                      placeholder="Nhập tên của bạn"
+                      placeholder="Nhập thành phố của bạn"
                     />
                     <ErrorMessage name="customer.firstName" component="div" className="text-danger" />
                   </div>
@@ -252,12 +254,10 @@ function BookingUser() {
                     <ErrorMessage name="price" component="div" className="text-danger" />
                   </div>
 
-                  <div className="row align-items-center g-1 mt-4">
-                    <label className="form-label fw-semibold col-sm-2 p-0">Tổng tiền (VNĐ)</label>
-                    <div className="col-sm-10 p-0">
-                      <Field type="text" name="totalPrice" className="form-control" readOnly />
-                      <ErrorMessage name="totalPrice" component="div" className="text-danger" />
-                    </div>
+                  <div className="mb-3">
+                    <label className="form-label fw-semibold ">Tổng tiền (VNĐ)</label>
+                    <Field type="text" name="totalPrice" className="form-control" readOnly />
+                    <ErrorMessage name="totalPrice" component="div" className="text-danger" />
                   </div>
                 </Col>
 
@@ -272,6 +272,12 @@ function BookingUser() {
                     <label className="form-label fw-semibold">Số lượng khách</label>
                     <Field type="number" name="guests" className="form-control" placeholder="Nhập số lượng khách" />
                     <ErrorMessage name="guests" component="div" className="text-danger" />
+                  </div>
+
+                  <div className="mb-3">
+                    <label className="form-label fw-semibold">Ghi chú (Không bắt buộc)</label>
+                    <Field as="textarea" name="note" className="form-control" placeholder="Nội dung" rows="1" />
+                    <ErrorMessage name="note" component="div" className="text-danger" />
                   </div>
                 </Col>
               </Row>

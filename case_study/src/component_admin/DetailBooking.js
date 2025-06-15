@@ -9,8 +9,8 @@ function DetailBooking() {
   const [bookingDetail, setBookingDetail] = useState({
     id: "",
     customer: {
-      firstName: "",
-      lastName: "",
+      fullName: "",
+      capital: "",
       phone: "",
       email: "",
     },
@@ -21,6 +21,7 @@ function DetailBooking() {
     price: "",
     facilityId: "",
     facilityTitle: "",
+    note: "",
   });
 
   const { id } = useParams();
@@ -58,12 +59,12 @@ function DetailBooking() {
         <Row className="g-5">
           <Col md={6}>
             <div className="mb-3">
-              <label className="form-label fw-semibold">Họ</label>
+              <label className="form-label fw-semibold">Họ và tên</label>
               <input
                 type="text"
                 name="customer.lastName"
                 className="form-control"
-                value={bookingDetail.customer.lastName}
+                value={bookingDetail.customer.fullName}
                 readOnly
               />
             </div>
@@ -81,12 +82,12 @@ function DetailBooking() {
 
           <Col md={6}>
             <div className="mb-3">
-              <label className="form-label fw-semibold">Tên</label>
+              <label className="form-label fw-semibold">Thành phố</label>
               <input
                 type="text"
                 name="customer.firstName"
                 className="form-control"
-                value={bookingDetail.customer.firstName}
+                value={bookingDetail.customer.capital}
                 readOnly
               />
             </div>
@@ -148,6 +149,10 @@ function DetailBooking() {
             </div>
           </Col>
         </Row>
+        <div className="mb-3">
+          <label className="form-label fw-semibold">Ghi chú</label>
+          <textarea type="text" name="note" className="form-control" value={bookingDetail.note} readOnly />
+        </div>
       </div>
 
       <div className="text-end mt-4">

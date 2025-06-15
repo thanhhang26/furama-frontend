@@ -43,23 +43,27 @@ function EditBooking() {
 
   const validationSchema = Yup.object({
     customer: Yup.object({
-      firstName: Yup.string().trim().required("Vui lòng nhập điền vào chỗ trống"), //.trim(): tránh lỗi khoảng trắng vô tình khi nhập
-      lastName: Yup.string().trim().required("Vui lòng nhập điền vào chỗ trống"),
+      fullName: Yup.string().trim().required("Trường này là bắt buộc"), //.trim(): tránh lỗi khoảng trắng vô tình khi nhập
+      capital: Yup.string().trim().required("Trường này là bắt buộc"),
       phone: Yup.string()
         .matches(/^[0-9]+$/, "Số điện thoại chỉ được chứa số")
         .min(10, "Số điện thoại phải có ít nhất 10 chữ số")
         .max(11, "Số điện thoại không được quá 11 chữ số")
-        .required("Vui lòng nhập số điện thoại"),
-      email: Yup.string().email("Email không hợp lệ").required("Vui lòng nhập điền vào chỗ trống"),
+        .required("Trường này là bắt buộc"),
+      email: Yup.string().email("Email không hợp lệ").required("Trường này là bắt buộc"),
     }),
     guests: Yup.number()
       .typeError("Số khách phải là số")
       .min(1, "Số khách phải ít nhất là 1")
-      .required("Vui lòng nhập số khách"),
-    startDate: Yup.date().required("Vui lòng chọn ngày đến"),
+      .required("Trường này là bắt buộc"),
+    startDate: Yup.date().required("Trường này là bắt buộc"),
     endDate: Yup.date()
       .min(Yup.ref("startDate"), "Ngày đi phải sau hoặc bằng ngày đến")
-      .required("Vui lòng chọn ngày đi"),
+      .required("Trường này là bắt buộc"),
+    facilityTitle: Yup.string()
+      .trim()
+      .required("Trường này là bắt buộc")
+      .matches(/^[\p{Lu}\s]+$/u, "Phải viết hoa toàn bộ"),
   });
 
   const handleSubmit = async (value) => {
@@ -95,10 +99,10 @@ function EditBooking() {
               <Row className="g-5">
                 <Col md={6}>
                   <div className="mb-3 ">
-                    <label className="form-label fw-semibold">Họ</label>
+                    <label className="form-label fw-semibold">Họ và tên</label>
                     <Field
                       type="text"
-                      name="customer.lastName"
+                      name="customer.fullName"
                       className="form-control"
                       placeholder="Nhập họ của bạn"
                     />
@@ -113,10 +117,10 @@ function EditBooking() {
 
                 <Col md={6}>
                   <div className="mb-3">
-                    <label className="form-label fw-semibold">Tên</label>
+                    <label className="form-label fw-semibold">Thành phố</label>
                     <Field
                       type="text"
-                      name="customer.firstName"
+                      name="customer.capital"
                       className="form-control"
                       placeholder="Nhập tên của bạn"
                     />
@@ -180,7 +184,12 @@ function EditBooking() {
                   </div>
                 </Col>
               </Row>
+              <div className="mb-3">
+                <label className="form-label fw-semibold">Ghi chú</label>
+                <Field as="textarea" type="text" name="note" className="form-control" />
+              </div>
             </div>
+
             {/* Nút Submit */}
             <div className="text-center mt-4">
               <Button type="submit" className="btn btn-custom-outline px-4">

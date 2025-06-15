@@ -72,6 +72,7 @@ function BookingAdmin() {
   const reloadData = () => {
     searchNameRef.current.value = "";
     searchPhoneRef.current.value = "";
+    searchRoomRef.current.value = "";
     setReload(!reload);
   };
 
@@ -173,27 +174,32 @@ function BookingAdmin() {
                 </td>
               </tr>
             ) : (
-              bookingList.map((b, i) => (
-                <tr key={b.id}>
-                  <td className="text-center align-middle">{(page - 1) * PAGE_SIZE + i + 1}</td>
-                  <td className="align-middle">{`${b.customer.lastName} ${b.customer.firstName}`}</td>
-                  <td className="align-middle">{b.customer.phone}</td>
-                  <td className="align-middle">
-                    {facilities.find((f) => String(f.id) === String(b.facilityId))?.title || "Không rõ"}
-                  </td>
-                  <td className="text-center align-middle">
-                    <Link className="btn btn-custom-outline me-3" to={`/detailBooking/${b.id}`}>
-                      Chi tiết
-                    </Link>
-                    <Link className="btn btn-custom-outline me-3" to={`/editBooking/${b.id}`}>
-                      Sửa
-                    </Link>
-                    <button onClick={() => showModalDelete(b)} className="btn btn-outline-danger">
-                      Xoá
-                    </button>
-                  </td>
-                </tr>
-              ))
+              bookingList.map(
+                (b, i) => (
+                  console.log("Booking item:", b),
+                  (
+                    <tr key={b.id}>
+                      <td className="text-center align-middle">{(page - 1) * PAGE_SIZE + i + 1}</td>
+                      <td className="align-middle">{b.customer?.fullName || "Không rõ"}</td>
+                      <td className="align-middle">{b.customer.phone}</td>
+                      <td className="align-middle">
+                        {facilities.find((f) => String(f.id) === String(b.facilityId))?.title || "Không rõ"}
+                      </td>
+                      <td className="text-center align-middle">
+                        <Link className="btn btn-custom-outline me-3" to={`/detailBooking/${b.id}`}>
+                          Chi tiết
+                        </Link>
+                        <Link className="btn btn-custom-outline me-3" to={`/editBooking/${b.id}`}>
+                          Sửa
+                        </Link>
+                        <button onClick={() => showModalDelete(b)} className="btn btn-outline-danger">
+                          Xoá
+                        </button>
+                      </td>
+                    </tr>
+                  )
+                )
+              )
             )}
           </tbody>
         </table>
