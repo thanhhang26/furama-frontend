@@ -124,7 +124,7 @@ function ContactAdmin() {
       </div>
 
       <div className="container">
-        <table className="table table-light table-bordered table-striped">
+        <table className="table table-success table-striped table-bordered table-hover">
           <thead>
             <tr>
               <th className="text-center" style={{ width: "40px" }}>
