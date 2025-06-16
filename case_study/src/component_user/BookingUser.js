@@ -52,8 +52,8 @@ function BookingUser() {
         setBooking({
           id: "",
           customer: {
-            firstName: "",
-            lastName: "",
+            fullName: "",
+            capital: "",
             phone: "",
             email: "",
           },
@@ -70,8 +70,8 @@ function BookingUser() {
         setBooking({
           id: "",
           customer: {
-            firstName: "",
-            lastName: "",
+            fullName: "",
+            capital: "",
             phone: "",
             email: "",
           },
@@ -133,7 +133,7 @@ function BookingUser() {
 
   return (
     <>
-      <div className="container card mt-4 mb-4 p-3 shadow-sm" style={{ borderRadius: 12 }}>
+      <div className="container card mt-4 mb-4 p-3 shadow-sm rounded-4">
         {selectedFacility ? (
           <Row>
             <Col md={5}>
@@ -185,7 +185,7 @@ function BookingUser() {
           onSubmit={handleSubmit}
           validationSchema={validationSchema}
         >
-          <Form className="card p-4 mb-4">
+          <Form className="card p-4 mb-4 rounded-4">
             <TotalPrice />
             <div>
               <h3 className="mb-3">Thông tin chi tiết của bạn</h3>

@@ -14,11 +14,7 @@
         "customer": "1 - 6",
         "price": "6.000.000"
       },
-      "features": [
-        "Thang Máy Riêng",
-        "Truy Cập Internet Miễn Phí",
-        "Hướng Biển"
-      ],
+      "features": ["Thang Máy Riêng", "Truy Cập Internet Miễn Phí", "Hướng Biển"],
       "typeId": 3
     },
     {
@@ -35,11 +31,7 @@
         "customer": "1 - 6",
         "price": "6.000.000"
       },
-      "features": [
-        "Thang Máy Riêng",
-        "Truy Cập Internet Miễn Phí",
-        "Toàn Cảnh Hướng Biển"
-      ],
+      "features": ["Thang Máy Riêng", "Truy Cập Internet Miễn Phí", "Toàn Cảnh Hướng Biển"],
       "typeId": 3
     },
     {
@@ -56,10 +48,7 @@
         "customer": "1 - 9",
         "price": "15.000.000"
       },
-      "features": [
-        "Truy Cập Internet Miễn Phí",
-        "Toàn Cảnh Hướng Biển"
-      ],
+      "features": ["Truy Cập Internet Miễn Phí", "Toàn Cảnh Hướng Biển"],
       "typeId": 2
     },
     {
@@ -76,10 +65,7 @@
         "customer": "6 - 8",
         "price": "10.000.000"
       },
-      "features": [
-        "Truy Cập Internet Miễn Phí",
-        "Toàn Cảnh Hướng Vườn"
-      ],
+      "features": ["Truy Cập Internet Miễn Phí", "Toàn Cảnh Hướng Vườn"],
       "typeId": 2
     },
     {
@@ -96,11 +82,7 @@
         "customer": "10 - 15",
         "price": "20.000.000"
       },
-      "features": [
-        "Thang Máy Riêng",
-        "Truy Cập Internet Miễn Phí",
-        "Toàn Cảnh Hướng Biển"
-      ],
+      "features": ["Thang Máy Riêng", "Truy Cập Internet Miễn Phí", "Toàn Cảnh Hướng Biển"],
       "typeId": 3
     },
     {
@@ -117,10 +99,7 @@
         "customer": "1 - 6",
         "price": "9.000.000"
       },
-      "features": [
-        "Truy Cập Internet Miễn Phí",
-        "Toàn Cảnh Hướng Biển"
-      ],
+      "features": ["Truy Cập Internet Miễn Phí", "Toàn Cảnh Hướng Biển"],
       "typeId": 1
     },
     {
@@ -137,10 +116,7 @@
         "customer": "2 - 6",
         "price": "6.000.000 "
       },
-      "features": [
-        "Truy Cập Internet Miễn Phí",
-        "Toàn Cảnh Hướng Vườn"
-      ],
+      "features": ["Truy Cập Internet Miễn Phí", "Toàn Cảnh Hướng Vườn"],
       "typeId": 1
     },
     {
@@ -157,11 +133,7 @@
         "customer": "1 - 4",
         "price": "6.000.000 "
       },
-      "features": [
-        "Thang Máy Riêng",
-        "Truy Cập Internet Miễn Phí",
-        "Toàn Cảnh Hướng Biển"
-      ],
+      "features": ["Thang Máy Riêng", "Truy Cập Internet Miễn Phí", "Toàn Cảnh Hướng Biển"],
       "typeId": 3
     },
     {
@@ -178,10 +150,7 @@
         "customer": "2 - 8",
         "price": "6.000.000 "
       },
-      "features": [
-        "Truy Cập Internet Miễn Phí",
-        "Toàn Cảnh Hướng Vườn"
-      ],
+      "features": ["Truy Cập Internet Miễn Phí", "Toàn Cảnh Hướng Vườn"],
       "typeId": 1
     }
   ],
@@ -344,6 +313,16 @@
       "totalPrice": "60.000.000",
       "price": "15.000.000",
       "note": "1 con"
+    }
+  ],
+  "option": [
+    {
+      "optionId": "full",
+      "optionText": "Trả toàn bộ tiền phòng"
+    },
+    {
+      "optionId": "partial",
+      "optionText": "Trả trước 1 nửa"
     }
   ]
 }
