@@ -314,15 +314,5 @@
       "price": "15.000.000",
       "note": "1 con"
     }
-  ],
-  "option": [
-    {
-      "optionId": "full",
-      "optionText": "Trả toàn bộ tiền phòng"
-    },
-    {
-      "optionId": "partial",
-      "optionText": "Trả trước 1 nửa"
-    }
   ]
 }
