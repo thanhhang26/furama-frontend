@@ -225,6 +225,49 @@ $tooltip-max-width: 250px;
   }
 }
 
+//booking
+/* Bảng cuộn ngang khi trên mobile */
+@media (max-width: 768px) {
+  .table-responsive-custom {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .table-responsive-custom table {
+    min-width: 600px; /* Đảm bảo bảng không bị bóp lại */
+  }
+
+  /* Search inputs dàn dọc */
+  .booking-search-row {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 1rem;
+  }
+
+  .booking-search-row .form-control {
+    width: 100% !important;
+  }
+
+  .booking-search-row .btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .booking-search-row .d-flex {
+    justify-content: start !important;
+  }
+
+  /* Pagination căn giữa & gọn lại */
+  #pagination .page-item {
+    font-size: 14px;
+  }
+
+  #pagination {
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+}
+
 #pagination {
   .pagination {
     gap: 5px; // Khoảng cách giữa các nút

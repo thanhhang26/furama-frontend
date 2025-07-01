@@ -82,7 +82,7 @@ function BookingAdmin() {
         <div className="text-center mb-5">
           <h2>DANH SÁCH ĐẶT PHÒNG</h2>
         </div>
-        <Row className="g-4 align-items-center">
+        <Row className="g-4 align-items-center booking-search-row">
           <Col xs="auto">
             <div className="d-flex align-items-center">
               <input
@@ -145,7 +145,7 @@ function BookingAdmin() {
         </Row>
       </div>
 
-      <div className="container">
+      <div className="container table-responsive-custom">
         <table className="table table-success table-striped table-bordered table-hover">
           <thead>
             <tr>
