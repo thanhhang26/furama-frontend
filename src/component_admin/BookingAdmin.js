@@ -185,7 +185,7 @@ function BookingAdmin() {
                       <td className="align-middle">
                         {facilities.find((f) => String(f.id) === String(b.facilityId))?.title || "Không rõ"}
                       </td>
-                      <td className="text-center align-middle">
+                      <td className="text-center align-middle booking-info-cell">
                         <Link className="btn btn-custom-outline me-3" to={`/detailBooking/${b.id}`}>
                           Chi tiết
                         </Link>

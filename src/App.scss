@@ -256,6 +256,18 @@ $tooltip-max-width: 250px;
   .booking-search-row .d-flex {
     justify-content: start !important;
   }
+  .booking-info-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    justify-content: center;
+  }
+
+  .booking-info-cell .btn {
+    width: 100%;
+    white-space: nowrap;
+    font-size: 14px;
+  }
 
   /* Pagination căn giữa & gọn lại */
   #pagination .page-item {
