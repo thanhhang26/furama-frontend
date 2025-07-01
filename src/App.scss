@@ -17,12 +17,11 @@ $tooltip-max-width: 250px;
   font-size: 18px;
   padding: 10px 20px;
   color: white;
-  transition: background-color 0.3s, transform 0.2s;
+  transition: transform 0.2s;
 }
 
 /* Hiệu ứng khi hover chuột vào */
 .navigation .nav-link:hover {
-  background-color: rgba(255, 255, 255, 0.2); /* Nền sáng lên nhẹ */
   transform: scale(1.05); /* Phóng to nhẹ */
   font-weight: 600;
   border-radius: 5px;
