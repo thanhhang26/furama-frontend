@@ -10,30 +10,21 @@ $tooltip-max-width: 250px;
   width: 65%;
 }
 
-/* Header responsive */
+/* Điều chỉnh header để không bị vỡ bố cục trên mobile */
 @media (max-width: 768px) {
   header {
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    gap: 10px;
+    flex-wrap: wrap;
+    padding: 8px 0 !important;
   }
 
   header .d-flex.align-items-center.gap-2 {
-    flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
-    width: 100%;
-    gap: 6px;
+    justify-content: flex-end;
   }
 
   header .btn {
     font-size: 14px;
     padding: 6px 10px;
-  }
-
-  header .text-truncate {
-    max-width: 80px !important;
-    font-size: 14px;
   }
 
   header img[alt="avatar"] {
@@ -43,6 +34,11 @@ $tooltip-max-width: 250px;
 
   header img[alt="Furama Logo"] {
     height: 50px !important;
+  }
+
+  header .text-truncate {
+    max-width: 80px;
+    font-size: 14px;
   }
 }
 
