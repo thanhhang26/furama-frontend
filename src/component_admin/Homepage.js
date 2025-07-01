@@ -26,16 +26,8 @@ function Homepage() {
 
       <Row className="mt-4">
         <Col md={6} className="text-center mb-5">
-          <img
-            src="https://furamavietnam.com/wp-content/uploads/2018/08/06-2.jpg"
-            alt="Beach View"
-            className="img-fluid rounded"
-          />
-          <img
-            src="https://furamavietnam.com/wp-content/uploads/2018/08/DES-PHONGNHA-1.jpg"
-            alt="Beach View"
-            className="img-fluid rounded mt-3"
-          />
+          <img src="/image/beachview1.jpg" alt="Beach View 1" className="img-fluid rounded" />
+          <img src="/image/beachview2.jpg" alt="Beach View 2" className="img-fluid rounded mt-3" />
         </Col>
         <Col md={6}>
           <p style={{ textAlign: "justify" }}>
