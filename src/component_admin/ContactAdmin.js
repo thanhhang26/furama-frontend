@@ -123,7 +123,7 @@ function ContactAdmin() {
         </Row>
       </div>
 
-      <div className="container">
+      <div className="container table-responsive">
         <table className="table table-success table-striped table-bordered table-hover">
           <thead>
             <tr>

@@ -301,6 +301,33 @@ $tooltip-max-width: 250px;
     font-size: 14px;
   }
 
+  /* Responsive cho ContactAdmin */
+  @media (max-width: 768px) {
+    .table-responsive {
+      overflow-x: auto;
+    }
+
+    table.table {
+      font-size: 14px;
+      min-width: 600px; /* Đảm bảo không vỡ bố cục bảng */
+    }
+
+    .form-control {
+      width: 100% !important;
+      margin-bottom: 10px;
+    }
+
+    .btn {
+      font-size: 14px;
+      padding: 6px 10px;
+    }
+
+    #pagination {
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+  }
+
   /* Pagination căn giữa & gọn lại */
   #pagination .page-item {
     font-size: 14px;
